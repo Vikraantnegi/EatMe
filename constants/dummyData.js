@@ -1,9 +1,10 @@
-import { icons, images } from "./";
+import { icons } from "./";
+const profileImg = require("../assets/images/profile.jpeg")
 
 const myProfile = {
-    name: "ByProgrammers",
-    profile_image: images.profile,
-    address: "No. 88, Jln Padungan, Kuching"
+    name: "Sara Larson",
+    profile_image: profileImg,
+    address: "No. 88, XYZ Street, ABC City"
 }
 
 const categories = [

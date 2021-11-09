@@ -13,7 +13,7 @@ const MainLayout = () => {
                 justifyContent: 'center'
             }}
         >
-            <Text>MainLayout</Text>
+            <Text style={{color: 'black'}}>Main Layout</Text>
         </View>
     )
 }
