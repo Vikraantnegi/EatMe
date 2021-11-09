@@ -101,6 +101,15 @@ const CustomDrawerContent = ({navigation}) => {
 const CustomDrawer = () => {
 
     const [progress, setProgress] = useState(new Animated.Value(0))
+    const scale = Animated.interpolateNode(progress, {
+        inputRange: [0,1],
+        outputRange: [1, 0.8]
+    })
+    const borderRadius = Animated.interpolateNode(progress, {
+        inputRange: [0,1],
+        outputRange: [1, 26]
+    })
+    const animatedStyle = { borderRadius, transform: [{ scale }] }
 
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
@@ -121,8 +130,8 @@ const CustomDrawer = () => {
                     )
                 }}
             >
-                <Drawer.Screen name="MainLayout" component={MainLayout}>
-                    {/* {props => <MainLayout {...props} />} */}
+                <Drawer.Screen name="MainLayout">
+                    {props => <MainLayout {...props} drawerAnimationStyle={animatedStyle} />}
                 </Drawer.Screen>
             </Drawer.Navigator>
         </View>
