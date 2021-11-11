@@ -1,7 +1,7 @@
 import * as tabActionTypes from './BottomActions';
 
 const initialState = {
-    selectedTab = ""
+    selectedTab: ""
 }
 
 const tabReducer = (state = initialState, action) => {
