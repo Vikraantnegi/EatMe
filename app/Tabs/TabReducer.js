@@ -1,4 +1,4 @@
-import * as tabActionTypes from './BottomActions';
+import * as tabActionTypes from './TabActions';
 
 const initialState = {
     selectedTab: ""

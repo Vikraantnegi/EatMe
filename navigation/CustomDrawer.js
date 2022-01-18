@@ -5,7 +5,7 @@ import { MainLayout } from '../screens'
 import { COLORS, FONTS, SIZES, constants, icons, dummyData } from '../constants'
 import Animated from 'react-native-reanimated'
 import { connect } from 'react-redux'
-import { setSelectedTab } from '../app/BottomNavigation/BottomActions'
+import { setSelectedTab } from '../app/Tabs/TabActions'
 import { bindActionCreators } from 'redux'
 
 const Drawer = createDrawerNavigator();
