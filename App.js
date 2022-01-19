@@ -5,7 +5,8 @@ import CustomDrawer from './navigation/CustomDrawer'
 import store from "./app/store";
 import { Provider } from "react-redux";
 import { LogBox } from 'react-native';
-LogBox.ignoreAllLogs();//Ignore all log notifications
+
+LogBox.ignoreAllLogs();
 
 const Stack = createStackNavigator();
 

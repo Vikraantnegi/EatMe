@@ -5,7 +5,7 @@ import { MainLayout } from '../screens'
 import { COLORS, FONTS, SIZES, constants, icons, dummyData } from '../constants'
 import Animated from 'react-native-reanimated'
 import { connect } from 'react-redux'
-import { setSelectedTab } from '../app/Tabs/TabActions'
+import { setSelectedTab } from '../app/Sides/TabActions'
 import { bindActionCreators } from 'redux'
 
 const Drawer = createDrawerNavigator();
@@ -16,8 +16,8 @@ const CustomDrawerItem = (props) => {
         <TouchableOpacity
             opacity={0.6}
             style={{ flexDirection: 'row', height: 40, marginBottom: SIZES.base, alignItems: 'center', paddingLeft: SIZES.radius, borderRadius: SIZES.base, 
-                backgroundColor: isSelected ? COLORS.transparentBlack1 : nul }}
-            onPress={() => onPress}
+                backgroundColor: isSelected ? COLORS.transparentBlack1 : null }}
+            onPress={() => onPress()}
         >
             <Image source={icon} style={{ height: 20, width: 20, tintColor: COLORS.white }} />
             <Text style={{ marginLeft: 15, color: COLORS.white, ...FONTS.h3 }}>{label}</Text>
@@ -44,7 +44,7 @@ const CustomDrawerContent = (props) => {
                 <TouchableOpacity
                     activeOpacity={0.6}
                     style={{ flexDirection: 'row', marginTop: SIZES.radius, alignItems: 'center' }}
-                    onPress={() => console.log('Profile')}
+                    onPress={() => navigation.navigate("Profile")}
                 >
                     <Image source={dummyData.myProfile?.profile_image} style={{ height: 50, width: 50, borderRadius: SIZES.radius }} />
                     <View style={{ marginLeft: SIZES.radius }}>
@@ -65,35 +65,75 @@ const CustomDrawerContent = (props) => {
                     <CustomDrawerItem
                         label={constants.screens.my_wallet}
                         icon={icons.wallet}
+                        isSelected={ selectedTab === constants.screens.my_wallet }
+                        onPress={() => {
+                            setSelectedTab(constants.screens.my_wallet)
+                            navigation.navigate("MainLayout")
+                        }}
                     />
                     <CustomDrawerItem
                         label={constants.screens.notification}
                         icon={icons.notification}
+                        isSelected={ selectedTab === constants.screens.notification }
+                        onPress={() => {
+                            setSelectedTab(constants.screens.notification)
+                            navigation.navigate("MainLayout")
+                        }}
                     />
                     <CustomDrawerItem
                         label={constants.screens.favourite}
                         icon={icons.favourite}
+                        isSelected={ selectedTab === constants.screens.favourite }
+                        onPress={() => {
+                            setSelectedTab(constants.screens.favourite)
+                            navigation.navigate("MainLayout")
+                        }}
                     />
                     <View style={{ height: 1, marginLeft: SIZES.radius, marginVertical: SIZES.radius, backgroundColor: COLORS.lightGray1 }} />
                     <CustomDrawerItem
-                        label="Track Your Order"
+                        label={constants.screens.track}
                         icon={icons.location}
+                        isSelected={ selectedTab === constants.screens.track }
+                        onPress={() => {
+                            setSelectedTab(constants.screens.track)
+                            navigation.navigate("MainLayout")
+                        }}
                     />
                     <CustomDrawerItem
-                        label="Coupons"
+                        label={constants.screens.coupons}
                         icon={icons.coupon}
+                        isSelected={ selectedTab === constants.screens.coupons }
+                        onPress={() => {
+                            setSelectedTab(constants.screens.coupons)
+                            navigation.navigate("MainLayout")
+                        }}
                     />
                     <CustomDrawerItem
-                        label="Settings"
+                        label={constants.screens.settings}
                         icon={icons.setting}
+                        isSelected={ selectedTab === constants.screens.settings }
+                        onPress={() => {
+                            setSelectedTab(constants.screens.settings)
+                            navigation.navigate("MainLayout")
+                        }}
                     />
                     <CustomDrawerItem
-                        label="Invite a Friend"
+                        label={constants.screens.invite}
                         icon={icons.profile}
+                        isSelected={ selectedTab === constants.screens.invite }
+                        onPress={() => {
+                            setSelectedTab(constants.screens.invite)
+                            navigation.navigate("MainLayout")
+                        }}
                     />
                     <CustomDrawerItem
-                        label="Help Center"
+                        label={constants.screens.help}
                         icon={icons.help}
+                        isSelected={ selectedTab === constants.screens.help }
+                        onPress={() => {
+                            setSelectedTab(constants.screens.help)
+                            navigation.navigate("MainLayout")
+                        }}
                     />
                 </View>
                 <View
@@ -137,8 +177,8 @@ const CustomDrawer = (props) => {
                     return(
                         <CustomDrawerContent 
                             navigation={props.navigation}
-                            setSelectedTab={props.setSelectedTab}
-                            selectedTab={props.selectedTab}
+                            setSelectedTab={setSelectedTab}
+                            selectedTab={selectedTab}
                         />
                     )
                 }}
