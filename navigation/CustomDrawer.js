@@ -6,7 +6,6 @@ import { COLORS, FONTS, SIZES, constants, icons, dummyData } from '../constants'
 import Animated from 'react-native-reanimated'
 import { connect } from 'react-redux'
 import { setSelectedTab } from '../app/Sidebar/TabActions'
-import { bindActionCreators } from 'redux'
 
 const Drawer = createDrawerNavigator();
 
@@ -193,7 +192,7 @@ const CustomDrawer = (props) => {
 
 function mapStateToProps(state){
     return{
-        selectedTab: state.tabs.selectedtab
+        selectedTab: state.tabs.selectedTab
     }
 }
 
