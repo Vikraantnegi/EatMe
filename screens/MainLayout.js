@@ -8,6 +8,45 @@ import { COLORS, FONTS, SIZES, icons, constants, dummyData  } from '../constants
 import { Header } from '../components'
 import LinearGradient from 'react-native-linear-gradient'
 
+const TabButton = (props) => {
+    const { label, icon, isSelected, onPress } = {...props};
+    return (
+        <TouchableWithoutFeedback
+            onPress={onPress}
+        >
+            <Animated.View
+                style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+            >
+                <Animated.View
+                    style={{ flexDirection: 'row', width: '80%', height: 50, alignItems: 'center', justifyContent: 'center', borderRadius: 25 }}
+                >
+                    <Image
+                        source={icon}
+                        style={{
+                            width: 20,
+                            height: 20,
+                            tintColor: COLORS.gray
+                        }}
+                    />
+                    {
+                        isSelected &&
+                            <Text
+                                numberOfLines={1}
+                                style={{
+                                    marginLeft: SIZES.base,
+                                    color: COLORS.gray,
+                                    ...FONTS.h3
+                                }}
+                            >
+                                {label}
+                            </Text>
+                    }
+                </Animated.View>
+            </Animated.View>
+        </TouchableWithoutFeedback>
+    )
+}
+
 const MainLayout = (props) => {
     const { drawerAnimationStyle, navigation, selectedTab, setSelectedTab } = {...props}
 
@@ -62,7 +101,36 @@ const MainLayout = (props) => {
                 <View
                     style={{ flex: 1, flexDirection: 'row', paddingHorizontal: SIZES.radius, paddingBottom: 10, borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: COLORS.white }}
                 >
-
+                    <TabButton 
+                        label={constants.screens.home}
+                        icon={icons.home}
+                        isSelected={selectedTab === constants.screens.home}
+                        onPress={() => setSelectedTab(constants.screens.home)}
+                    />
+                    <TabButton 
+                        label={constants.screens.search}
+                        icon={icons.search}
+                        isSelected={selectedTab === constants.screens.search}
+                        onPress={() => setSelectedTab(constants.screens.search)}
+                    />
+                    <TabButton 
+                        label={constants.screens.cart}
+                        icon={icons.cart}
+                        isSelected={selectedTab === constants.screens.cart}
+                        onPress={() => setSelectedTab(constants.screens.cart)}
+                    />
+                    <TabButton 
+                        label={constants.screens.favourite}
+                        icon={icons.favourite}
+                        isSelected={selectedTab === constants.screens.favourite}
+                        onPress={() => setSelectedTab(constants.screens.favourite)}
+                    />
+                    <TabButton 
+                        label={constants.screens.notification}
+                        icon={icons.notification}
+                        isSelected={selectedTab === constants.screens.notification}
+                        onPress={() => setSelectedTab(constants.screens.notification)}
+                    />
                 </View>
             </View>
         </Animated.View>
