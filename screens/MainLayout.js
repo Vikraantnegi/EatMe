@@ -32,7 +32,24 @@ const MainLayout = (props) => {
                     alignItems: 'center'
                 }}
                 title={selectedTab.toUpperCase()}
-                navigation={navigation}
+                left={
+                    <TouchableOpacity
+                        activeOpacity={0.6}
+                        style={{ width: 40, height: 40, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: COLORS.gray2, borderRadius: SIZES.radius }}
+                        onPress={() => navigation.openDrawer()}
+                    >
+                        <Image source={ icons.menu } />
+                    </TouchableOpacity>
+                }
+                right={
+                    <TouchableOpacity
+                        activeOpacity={0.6}
+                        style={{ width: 40, height: 40, borderRadius: SIZES.radius }}
+                        onPress={() => navigation.navigate("Profile")}
+                    >
+                        <Image source={dummyData.myProfile?.profile_image} style={{ height: 50, width: 50, borderRadius: SIZES.radius }} />
+                    </TouchableOpacity>
+                }
             />
             <View
                 style={{ flex: 1 }}
