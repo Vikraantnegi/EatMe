@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
-import { COLORS, FONTS, SIZES, icons, dummyData } from '../constants';
+import { View, Text } from 'react-native';
+import { COLORS, FONTS } from '../constants';
 
 const Header = (props) => {
     const { containerStyle, title, left, right } = {...props}

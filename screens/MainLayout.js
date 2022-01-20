@@ -6,6 +6,7 @@ import { setSelectedTab } from '../app/Sidebar/TabActions';
 import { Home, Search, CartTab, Favourite, Notification } from '../screens';
 import { COLORS, FONTS, SIZES, icons, constants, dummyData  } from '../constants';
 import { Header } from '../components'
+import LinearGradient from 'react-native-linear-gradient'
 
 const MainLayout = (props) => {
     const { drawerAnimationStyle, navigation, selectedTab, setSelectedTab } = {...props}
@@ -18,19 +19,12 @@ const MainLayout = (props) => {
         <Animated.View
             style={{
                 flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'white',
+                backgroundColor: COLORS.white,
                 ...drawerAnimationStyle
             }}
         >
             <Header
-                containerStyle={{
-                    height: 50,
-                    paddingHorizontal: SIZES.padding,
-                    marginTop: 40,
-                    alignItems: 'center'
-                }}
+                containerStyle={{ height: 50, paddingHorizontal: SIZES.padding, marginTop: 40, aignItems: 'center' }}
                 title={selectedTab.toUpperCase()}
                 left={
                     <TouchableOpacity
@@ -55,6 +49,21 @@ const MainLayout = (props) => {
                 style={{ flex: 1 }}
             >
                 <Text style={{color: COLORS.black}}>Main Layout</Text>
+            </View>
+            <View
+                style={{ height: 100, justifyContent: 'flex-end' }}
+            >
+                <LinearGradient
+                    start={{ x:0, y: 0 }}
+                    end={{ x: 0, y: 4 }}
+                    colors={[ COLORS.transparent, COLORS.lightGray1 ]}
+                    style={{ position: 'absolute', top: -20, left: 0, right: 0, height: 100, borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
+                />
+                <View
+                    style={{ flex: 1, flexDirection: 'row', paddingHorizontal: SIZES.radius, paddingBottom: 10, borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: COLORS.white }}
+                >
+
+                </View>
             </View>
         </Animated.View>
     )
