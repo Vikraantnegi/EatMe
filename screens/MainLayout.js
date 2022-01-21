@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { connect } from 'react-redux';
@@ -10,6 +10,7 @@ import LinearGradient from 'react-native-linear-gradient'
 
 const MainLayout = (props) => {
     const { drawerAnimationStyle, navigation, selectedTab, setSelectedTab } = {...props}
+    const flatlistRef = useRef();
 
     useEffect(() => {
         setSelectedTab(constants.screens.home)
@@ -23,6 +24,7 @@ const MainLayout = (props) => {
                 ...drawerAnimationStyle
             }}
         >
+            {/* Header */}
             <Header
                 containerStyle={{ height: 50, paddingHorizontal: SIZES.padding, marginTop: 40, aignItems: 'center' }}
                 title={selectedTab.toUpperCase()}
@@ -45,11 +47,38 @@ const MainLayout = (props) => {
                     </TouchableOpacity>
                 }
             />
+
+            {/* Content */}
             <View
                 style={{ flex: 1 }}
             >
-                <Text style={{color: COLORS.black}}>Main Layout</Text>
+                <FlatList
+                    ref={flatlistRef}
+                    horizontal
+                    scrollEnabled={false}
+                    snapToAlignment='center'
+                    snapToInterval={SIZES.width}
+                    pagingEnabled
+                    showsHorizontalScrollIndicator={false}
+                    data={constants.bottom_tabs}
+                    keyExtractor={item => `${item.id}`}
+                    renderItem={({item, index}) => {
+                        return (
+                            <View
+                                style={{ height: SIZES.height, width: SIZES.width }}
+                            >
+                                {item.label == constants.screens.home && <Home />}
+                                {item.label == constants.screens.search && <Search />}
+                                {item.label == constants.screens.cart && <CartTab />}
+                                {item.label == constants.screens.favourite && <Favourite />}
+                                {item.label == constants.screens.notification && <Notification />}
+                            </View>
+                        )
+                    }}
+                />
             </View>
+
+            {/* Footer */}
             <View
                 style={{ height: 100, justifyContent: 'flex-end' }}
             >
@@ -67,30 +96,40 @@ const MainLayout = (props) => {
                         icon={icons.home}
                         isSelected={selectedTab === constants.screens.home}
                         onPress={() => setSelectedTab(constants.screens.home)}
+                        flatlistRef={flatlistRef}
+                        tabId={0}
                     />
                     <TabButton 
                         label={constants.screens.search}
                         icon={icons.search}
                         isSelected={selectedTab === constants.screens.search}
                         onPress={() => setSelectedTab(constants.screens.search)}
+                        flatlistRef={flatlistRef}
+                        tabId={1}
                     />
                     <TabButton 
                         label={constants.screens.cart}
                         icon={icons.cart}
                         isSelected={selectedTab === constants.screens.cart}
                         onPress={() => setSelectedTab(constants.screens.cart)}
+                        flatlistRef={flatlistRef}
+                        tabId={2}
                     />
                     <TabButton 
                         label={constants.screens.favourite}
                         icon={icons.favourite}
                         isSelected={selectedTab === constants.screens.favourite}
                         onPress={() => setSelectedTab(constants.screens.favourite)}
+                        flatlistRef={flatlistRef}
+                        tabId={3}
                     />
                     <TabButton 
                         label={constants.screens.notification}
                         icon={icons.notification}
                         isSelected={selectedTab === constants.screens.notification}
                         onPress={() => setSelectedTab(constants.screens.notification)}
+                        flatlistRef={flatlistRef}
+                        tabId={4}
                     />
                 </View>
             </View>

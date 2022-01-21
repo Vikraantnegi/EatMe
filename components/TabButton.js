@@ -5,7 +5,7 @@ import { COLORS, FONTS, SIZES  } from '../constants';
 
 
 const TabButton = (props) => {
-    const { label, icon, isSelected, onPress } = {...props};
+    const { label, icon, isSelected, onPress, flatlistRef, tabId } = {...props};
 
     const tabFlex = useSharedValue(1)
     const tabColor = useSharedValue(COLORS.white)
@@ -26,6 +26,10 @@ const TabButton = (props) => {
         if(isSelected){
             tabFlex.value = withTiming(4, { duration: 500 })
             tabColor.value = withTiming(COLORS.primary, { duration: 500 }) 
+            flatlistRef?.current?.scrollToIndex({
+                index: tabId,
+                animated: false
+            })
         } else{
             tabFlex.value = withTiming(1, { duration: 500 })
             tabColor.value = withTiming(COLORS.white, { duration: 500 })
