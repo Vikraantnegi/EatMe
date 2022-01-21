@@ -47,7 +47,7 @@ const TabButton = (props) => {
                         style={{
                             width: 20,
                             height: 20,
-                            tintColor: COLORS.gray
+                            tintColor: isSelected ? COLORS.white : COLORS.gray
                         }}
                     />
                     {
@@ -56,7 +56,7 @@ const TabButton = (props) => {
                                 numberOfLines={1}
                                 style={{
                                     marginLeft: SIZES.base,
-                                    color: COLORS.gray,
+                                    color: isSelected ? COLORS.white : COLORS.gray,
                                     ...FONTS.h3
                                 }}
                             >
