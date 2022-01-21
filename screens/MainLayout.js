@@ -1,51 +1,12 @@
 import React, { useEffect } from 'react';
-import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Image, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { connect } from 'react-redux';
 import { setSelectedTab } from '../app/Sidebar/TabActions';
 import { Home, Search, CartTab, Favourite, Notification } from '../screens';
 import { COLORS, FONTS, SIZES, icons, constants, dummyData  } from '../constants';
-import { Header } from '../components'
+import { Header, TabButton } from '../components'
 import LinearGradient from 'react-native-linear-gradient'
-
-const TabButton = (props) => {
-    const { label, icon, isSelected, onPress } = {...props};
-    return (
-        <TouchableWithoutFeedback
-            onPress={onPress}
-        >
-            <Animated.View
-                style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
-            >
-                <Animated.View
-                    style={{ flexDirection: 'row', width: '80%', height: 50, alignItems: 'center', justifyContent: 'center', borderRadius: 25 }}
-                >
-                    <Image
-                        source={icon}
-                        style={{
-                            width: 20,
-                            height: 20,
-                            tintColor: COLORS.gray
-                        }}
-                    />
-                    {
-                        isSelected &&
-                            <Text
-                                numberOfLines={1}
-                                style={{
-                                    marginLeft: SIZES.base,
-                                    color: COLORS.gray,
-                                    ...FONTS.h3
-                                }}
-                            >
-                                {label}
-                            </Text>
-                    }
-                </Animated.View>
-            </Animated.View>
-        </TouchableWithoutFeedback>
-    )
-}
 
 const MainLayout = (props) => {
     const { drawerAnimationStyle, navigation, selectedTab, setSelectedTab } = {...props}
