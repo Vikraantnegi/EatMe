@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 const Favourite = () => {
     return (
@@ -10,7 +10,7 @@ const Favourite = () => {
                 justifyContent: 'center'
             }}
         >
-            <Text>Fovourite</Text>
+            <Text style={{ color: 'black' }}>Fovourite</Text>
         </View>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 const Home = () => {
     return (
@@ -7,10 +7,10 @@ const Home = () => {
             style={{
                 flex: 1,
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
             }}
         >
-            <Text>Home</Text>
+            <Text style={{ color: 'black' }}>Home</Text>
         </View>
     )
 }

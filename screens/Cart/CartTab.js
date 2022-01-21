@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 const CartTab = () => {
     return (
@@ -10,7 +10,7 @@ const CartTab = () => {
                 justifyContent: 'center'
             }}
         >
-            <Text>Cart</Text>
+            <Text style={{ color: 'black' }}>Cart</Text>
         </View>
     )
 }

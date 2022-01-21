@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 const Notification = () => {
     return (
@@ -10,7 +10,7 @@ const Notification = () => {
                 justifyContent: 'center'
             }}
         >
-            <Text>Notification</Text>
+            <Text style={{ color: 'black' }}>Notification</Text>
         </View>
     )
 }

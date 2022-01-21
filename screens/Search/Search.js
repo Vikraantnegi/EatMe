@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 const Search = () => {
     return (
@@ -10,7 +10,7 @@ const Search = () => {
                 justifyContent: 'center'
             }}
         >
-            <Text>Search</Text>
+            <Text style={{ color: 'black' }}>Search</Text>
         </View>
     )
 }
