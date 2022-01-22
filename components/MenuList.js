@@ -11,7 +11,7 @@ const MenuList = (props) => {
         setSelectedMenu(id)
         handleChangeCategory(selectedCategoryId, id)
     }
-
+    
     return (
         <FlatList
             horizontal
@@ -26,7 +26,7 @@ const MenuList = (props) => {
                         style={{ marginLeft: SIZES.padding, marginRight: index === dummyData.menu.length - 1 ? SIZES.padding : 0 }}
                     >
                         <Text
-                            style={{ color: selectedMenuType == item.id ? COLORS.primary : COLORS.black, ...FONTS.h3 }}
+                            style={{ color: selectedMenuType === item.id ? COLORS.primary : COLORS.black, ...FONTS.h3 }}
                         >
                             {item.name}
                         </Text>

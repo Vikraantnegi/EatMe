@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
-import { SearchComponent, FoodCard } from '../../components';
+import { SearchComponent, FoodCard, MenuList } from '../../components';
 import { FONTS, SIZES, icons, dummyData, COLORS } from '../../constants';
 
 const Home = () => {
@@ -29,6 +29,16 @@ const Home = () => {
                 data={menuList}
                 keyExtractor={(item) => `${item.id}`}
                 showsVerticalScrollIndicator={false}
+                ListHeaderComponent={
+                    <View>
+                        <MenuList
+                            selectedMenuType={selectedMenu}
+                            setSelectedMenu={setSelectedMenu}
+                            handleChangeCategory={handleChangeMenu}
+                            selectedCategoryId={selectedCategory}
+                        />
+                    </View>
+                }
                 renderItem={({item, index}) => {
                     return(
                         <FoodCard
