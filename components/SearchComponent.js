@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 const SearchComponent = () => {
   return (
     <View
-        style={{ flexDirection: 'row', height: 40, alignItems: 'center', marginHorizontal: SIZES.padding, marginVertical: 2*SIZES.base, paddingHorizontal: SIZES.radius, borderRadius: SIZES.radius, backgroundColor: COLORS.lightGray2 }}
+        style={{ flexDirection: 'row', height: 40, alignItems: 'center', marginHorizontal: SIZES.padding, marginVertical: 1.5*SIZES.base, paddingHorizontal: SIZES.radius, borderRadius: SIZES.radius, backgroundColor: COLORS.lightGray2 }}
     >
         <Image
             source={icons.search}

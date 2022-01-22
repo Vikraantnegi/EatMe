@@ -26,7 +26,7 @@ const MainLayout = (props) => {
         >
             {/* Header */}
             <Header
-                containerStyle={{ height: 50, paddingHorizontal: SIZES.padding, marginTop: 40, aignItems: 'center' }}
+                containerStyle={{ height: 50, paddingHorizontal: SIZES.padding, marginTop: 20, aignItems: 'center' }}
                 title={selectedTab.toUpperCase()}
                 left={
                     <TouchableOpacity
