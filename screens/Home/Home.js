@@ -7,6 +7,7 @@ const Home = () => {
 
     const [selectedCategory, setSelectedCategory] = useState(1)
     const [selectedMenu, setSelectedMenu] = useState(1)
+    const [recommendedMeals, setRecommended] = useState([])
     const [menuList, setMenuList] = useState([])
 
     useEffect(() => {
@@ -14,19 +15,22 @@ const Home = () => {
     }, [selectedCategory, selectedMenu])
 
     const handleChangeMenu = (categoryId, menuId) => {
+        let recommended = dummyData.menu.find(a => a.name == "Recommended")
         let selectedMenu = dummyData.menu.find(a => a.id === menuId)
+
+        setRecommended(recommended?.list.filter(a => a.categories.includes(categoryId)))
         setMenuList(selectedMenu?.list.filter( a => a.categories.includes(categoryId)))
     }
 
     return (
         <View
-            style={{
-                flex: 1
-            }}
+            style={{ flex: 1 }}
         >
             <SearchComponent />
 
-            <RecommendedSection />
+            <RecommendedSection
+                data={recommendedMeals}
+            />
 
             <FlatList
                 data={menuList}
