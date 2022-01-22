@@ -6,6 +6,7 @@ const FoodCard = (props) => {
   const { containerStyle, item, imageStyle, onPress } = {...props}
   return (
     <TouchableOpacity
+        activeOpacity={0.6}
         style={{ flexDirection: 'row', borderRadius: SIZES.radius, backgroundColor: COLORS.lightGray2, ...containerStyle }}
     >
         <View style={{ flexDirection: 'row', position: 'absolute', top: 5, right: SIZES.radius }}>

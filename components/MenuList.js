@@ -11,17 +11,18 @@ const MenuList = (props) => {
         setSelectedMenu(id)
         handleChangeCategory(selectedCategoryId, id)
     }
-    
+
     return (
         <FlatList
             horizontal
             data={dummyData.menu}
             showsHorizontalScrollIndicator={false}
             keyExtractor={item => `${item.id}`}
-            contentContainerStyle={{ marginTop: 30, marginBottom: 20 }}
+            contentContainerStyle={{ marginVertical: 20 }}
             renderItem={({item, index}) => {
                 return(
                     <TouchableOpacity
+                        activeOpacity={0.6}
                         onPress={() => handleMenuClick(item.id)}
                         style={{ marginLeft: SIZES.padding, marginRight: index === dummyData.menu.length - 1 ? SIZES.padding : 0 }}
                     >

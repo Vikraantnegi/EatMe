@@ -34,6 +34,7 @@ const CustomDrawerContent = (props) => {
             <View style={{ flex: 1, paddingHorizontal: SIZES.radius }}>
                 <View style={{ alignItems: 'flex-start', justifyContent: 'center' }}>
                     <TouchableOpacity
+                        activeOpacity={0.6}
                         style={{ alignItems: 'center', justifyContent: 'center' }}
                         onPress={() => navigation.closeDrawer()}
                     >

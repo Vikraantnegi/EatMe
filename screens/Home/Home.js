@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
-import { SearchComponent, FoodCard, MenuList } from '../../components';
+import { SearchComponent, FoodCard, MenuList, RecommendedSection } from '../../components';
 import { FONTS, SIZES, icons, dummyData, COLORS } from '../../constants';
 
 const Home = () => {
@@ -25,6 +25,9 @@ const Home = () => {
             }}
         >
             <SearchComponent />
+
+            <RecommendedSection />
+
             <FlatList
                 data={menuList}
                 keyExtractor={(item) => `${item.id}`}
