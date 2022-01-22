@@ -1,16 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
+import { SearchComponent } from '../../components';
+import { FONTS, SIZES, icons, dummyData, COLORS } from '../../constants';
 
 const Home = () => {
     return (
         <View
             style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
+                flex: 1
             }}
         >
-            <Text style={{ color: 'black' }}>Home</Text>
+            <SearchComponent />
+               
         </View>
     )
 }
