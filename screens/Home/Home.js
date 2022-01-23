@@ -28,16 +28,15 @@ const Home = () => {
         >
             <SearchComponent />
 
-            <RecommendedSection
-                data={recommendedMeals}
-            />
-
             <FlatList
                 data={menuList}
                 keyExtractor={(item) => `${item.id}`}
                 showsVerticalScrollIndicator={false}
                 ListHeaderComponent={
                     <View>
+                        <RecommendedSection
+                            data={recommendedMeals}
+                        />
                         <MenuList
                             selectedMenuType={selectedMenu}
                             setSelectedMenu={setSelectedMenu}
