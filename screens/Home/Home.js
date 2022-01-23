@@ -25,6 +25,27 @@ const Home = () => {
         setMenuList(selectedMenu?.list.filter( a => a.categories.includes(categoryId)))
     }
 
+    const deliveryHeader = () => {
+        return(
+            <View
+                style={{ marginTop: SIZES.padding, marginHorizontal: SIZES.padding }}
+            >
+                <Text
+                    style={{ color: COLORS.primary, ...FONTS.body3 }}
+                >
+                    DELIVERY TO
+                </Text>
+                <TouchableOpacity
+                    activeOpacity={0.6}
+                    style={{ flexDirection: 'row', marginTop: SIZES.base, alignItems: 'center' }}
+                >
+                    <Text style={{ color: COLORS.black, ...FONTS.h3 }} >{ dummyData.myProfile.address }</Text>
+                    <Image source={icons.down_arrow} style={{ marginLeft: SIZES.base, height: 20, width: 20 }} />
+                </TouchableOpacity>
+            </View>
+        )
+    }
+
     return (
         <View
             style={{ flex: 1 }}
@@ -37,6 +58,7 @@ const Home = () => {
                 showsVerticalScrollIndicator={false}
                 ListHeaderComponent={
                     <View>
+                        {deliveryHeader()}
                         <CategorySection
                             data={dummyData.categories}
                             selected={selectedCategory}
@@ -44,12 +66,16 @@ const Home = () => {
                             handleChange={handleChangeMenu}
                             selectedMenuType={selectedMenu}
                         />
-                        <PopularSection
-                            data={popularMeals}
-                        />
-                        <RecommendedSection
-                            data={recommendedMeals}
-                        />
+                        {popularMeals.length > 0 &&
+                            <PopularSection
+                                data={popularMeals}
+                            />
+                        }
+                        {recommendedMeals.length > 0 &&
+                            <RecommendedSection
+                                data={recommendedMeals}
+                            />
+                        }
                         <MenuList
                             selectedMenuType={selectedMenu}
                             setSelectedMenu={setSelectedMenu}
