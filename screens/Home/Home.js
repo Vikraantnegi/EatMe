@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
-import { SearchComponent, FoodCard, MenuList, RecommendedSection, PopularSection } from '../../components';
+import { SearchComponent, FoodCard, MenuList, RecommendedSection, PopularSection, CategorySection } from '../../components';
 import { FONTS, SIZES, icons, dummyData, COLORS } from '../../constants';
 
 const Home = () => {
@@ -37,6 +37,11 @@ const Home = () => {
                 showsVerticalScrollIndicator={false}
                 ListHeaderComponent={
                     <View>
+                        <CategorySection
+                            data={dummyData.categories}
+                            selected={selectedCategory}
+                            onPress={setSelectedCategory}
+                        />
                         <PopularSection
                             data={popularMeals}
                         />
