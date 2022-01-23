@@ -1,3 +1,4 @@
+import CategorySection from "./CategorySection";
 import FoodCard from "./FoodCard";
 import FoodCard2 from "./FoodCard2";
 import Header from "./Header";
@@ -15,5 +16,6 @@ export {
     MenuList,
     RecommendedSection,
     PopularSection,
-    FoodCard2
+    FoodCard2,
+    CategorySection
 }
