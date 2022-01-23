@@ -40,7 +40,9 @@ const Home = () => {
                         <CategorySection
                             data={dummyData.categories}
                             selected={selectedCategory}
-                            onPress={setSelectedCategory}
+                            onSelect={setSelectedCategory}
+                            handleChange={handleChangeMenu}
+                            selectedMenuType={selectedMenu}
                         />
                         <PopularSection
                             data={popularMeals}
