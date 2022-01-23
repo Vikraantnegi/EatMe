@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
-import { SearchComponent, FoodCard, MenuList, RecommendedSection } from '../../components';
+import { SearchComponent, FoodCard, MenuList, RecommendedSection, PopularSection } from '../../components';
 import { FONTS, SIZES, icons, dummyData, COLORS } from '../../constants';
 
 const Home = () => {
@@ -8,6 +8,7 @@ const Home = () => {
     const [selectedCategory, setSelectedCategory] = useState(1)
     const [selectedMenu, setSelectedMenu] = useState(1)
     const [recommendedMeals, setRecommended] = useState([])
+    const [popularMeals, setPopular] = useState([])
     const [menuList, setMenuList] = useState([])
 
     useEffect(() => {
@@ -15,9 +16,11 @@ const Home = () => {
     }, [selectedCategory, selectedMenu])
 
     const handleChangeMenu = (categoryId, menuId) => {
+        let popular = dummyData.menu.find(a => a.name == "Popular")
         let recommended = dummyData.menu.find(a => a.name == "Recommended")
         let selectedMenu = dummyData.menu.find(a => a.id === menuId)
 
+        setPopular(popular?.list.filter(a => a.categories.includes(categoryId)))
         setRecommended(recommended?.list.filter(a => a.categories.includes(categoryId)))
         setMenuList(selectedMenu?.list.filter( a => a.categories.includes(categoryId)))
     }
@@ -34,6 +37,9 @@ const Home = () => {
                 showsVerticalScrollIndicator={false}
                 ListHeaderComponent={
                     <View>
+                        <PopularSection
+                            data={popularMeals}
+                        />
                         <RecommendedSection
                             data={recommendedMeals}
                         />
