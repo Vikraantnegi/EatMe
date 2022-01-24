@@ -1,6 +1,6 @@
-import { View, Animated, Modal, TouchableWithoutFeedback } from 'react-native';
+import { View, Animated, Modal, TouchableWithoutFeedback, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
-import { COLORS, SIZES } from '../constants';
+import { COLORS, FONTS, icons, SIZES } from '../constants';
 
 const FilterModal = (props) => {
     const { isVisible, onClose } = {...props}
@@ -9,15 +9,17 @@ const FilterModal = (props) => {
 
     const fadeIn = () => {
         Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 500
+            toValue: 1,
+            duration: 500,
+            useNativeDriver: false
         }).start();
     };
 
     const fadeOut = () => {
         Animated.timing(fadeAnim, {
           toValue: 0,
-          duration: 300
+          duration: 300,
+          useNativeDriver: false
         }).start(() => onClose());
     };
 
@@ -31,8 +33,20 @@ const FilterModal = (props) => {
 
     const modalHeight = fadeAnim.interpolate({
         inputRange: [0, 1],
-        outputRange: [SIZES.height, SIZES.height - 680]
+        outputRange: [SIZES.height + 30, SIZES.height - 600]
     })
+
+    const FilterSection = (props) => {
+        const { containerStyle, title, children } = {...props};
+        return(
+            <View
+                style={{ marginTop: SIZES.padding, ...containerStyle }}
+            >
+                <Text style={{ ...FONTS.h3, color: COLORS.black }}>{title}</Text>
+                {children}
+            </View>
+        )
+    }
     
     return (
         <Modal
@@ -55,7 +69,79 @@ const FilterModal = (props) => {
                         borderTopRightRadius: SIZES.radius, borderTopLeftRadius: SIZES.radius, backgroundColor: COLORS.white 
                     }}
                 >
+                    <View
+                        style={{ flexDirection: 'row', alignItems: 'center' }}
+                    >
+                        <Text
+                            style={{ flex: 1, ...FONTS.h3, fontSize: 18, color: COLORS.black }}
+                        >
+                            Filter Your Search
+                        </Text>
+                        <TouchableOpacity
+                            activeOpacity={0.6}
+                            style={{ borderWidth: 2, borderRadius: 10, borderColor: COLORS.gray2 }}
+                            onPress={() => setFilterModal(false)}
+                        >
+                            <Image
+                                source={icons.cross}
+                                style={{ width: 30, height: 30, tintColor: COLORS.gray2 }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <ScrollView
+                        showsVerticalScrollIndicator={false}
+                        contentContainerStyle={{ paddingBottom: 250 }}
+                    >
+                        <FilterSection
+                            title="Distance"
+                        >
+                            <View
+                                style={{ alignItems: 'center' }}
+                            >
 
+                            </View>
+                        </FilterSection>
+
+                        <FilterSection
+                            title="Delivery Time"
+                        >
+                            <View
+                                
+                            >
+
+                            </View>
+                        </FilterSection>
+
+                        <FilterSection
+                            title="Pricing Range"
+                        >
+                            <View
+                                
+                            >
+
+                            </View>
+                        </FilterSection>
+
+                        <FilterSection
+                            title="Rating"
+                        >
+                            <View
+                                
+                            >
+
+                            </View>
+                        </FilterSection>
+
+                        <FilterSection
+                            title="Tags"
+                        >
+                            <View
+                                
+                            >
+
+                            </View>
+                        </FilterSection>
+                    </ScrollView>
                 </Animated.View>
             </View>
         </Modal>
