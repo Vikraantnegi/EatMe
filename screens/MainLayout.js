@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { View, TouchableOpacity, Image, FlatList } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { connect } from 'react-redux';
 import { setSelectedTab } from '../app/Sidebar/TabActions';
 import { Home, Search, CartTab, Favourite, Notification } from '../screens';
-import { COLORS, FONTS, SIZES, icons, constants, dummyData  } from '../constants';
+import { COLORS, SIZES, icons, constants, dummyData  } from '../constants';
 import { Header, TabButton } from '../components'
 import LinearGradient from 'react-native-linear-gradient'
 

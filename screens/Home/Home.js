@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import { SearchComponent, FoodCard, MenuList, RecommendedSection, PopularSection, CategorySection, FilterModal } from '../../components';
 import { FONTS, SIZES, icons, dummyData, COLORS } from '../../constants';
 
