@@ -3,7 +3,7 @@ import React from 'react';
 import { COLORS, SIZES, icons, FONTS } from '../constants';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const SearchComponent = () => {
+const SearchComponent = ({onOpen}) => {
   return (
     <View
         style={{ flexDirection: 'row', height: 40, alignItems: 'center', marginHorizontal: SIZES.padding, marginVertical: 1.5*SIZES.base, paddingHorizontal: SIZES.radius, borderRadius: SIZES.radius, backgroundColor: COLORS.lightGray2 }}
@@ -21,7 +21,7 @@ const SearchComponent = () => {
 
         <TouchableOpacity
             activeOpacity={0.6}
-            onPress={() => console.log('Fliters')}
+            onPress={onOpen}
         >
             <Image
                 source={ icons.filter }

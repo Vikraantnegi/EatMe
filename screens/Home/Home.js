@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
-import { SearchComponent, FoodCard, MenuList, RecommendedSection, PopularSection, CategorySection } from '../../components';
+import { SearchComponent, FoodCard, MenuList, RecommendedSection, PopularSection, CategorySection, FilterModal } from '../../components';
 import { FONTS, SIZES, icons, dummyData, COLORS } from '../../constants';
 
 const Home = () => {
@@ -10,6 +10,7 @@ const Home = () => {
     const [recommendedMeals, setRecommended] = useState([])
     const [popularMeals, setPopular] = useState([])
     const [menuList, setMenuList] = useState([])
+    const [showFilterModal, setShowFilter] = useState(false);
 
     useEffect(() => {
         handleChangeMenu( selectedCategory, selectedMenu );
@@ -50,8 +51,14 @@ const Home = () => {
         <View
             style={{ flex: 1 }}
         >
-            <SearchComponent />
-
+            <SearchComponent onOpen={() => setShowFilter(true)} />
+            {
+                showFilterModal &&             
+                    <FilterModal
+                        isVisible={showFilterModal}
+                        onClose={() => setShowFilter(false)}
+                    />
+            }
             <FlatList
                 data={menuList}
                 keyExtractor={(item) => `${item.id}`}

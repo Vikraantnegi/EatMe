@@ -1,4 +1,5 @@
 import CategorySection from "./CategorySection";
+import FilterModal from "./FilterModal";
 import FoodCard from "./FoodCard";
 import FoodCard2 from "./FoodCard2";
 import Header from "./Header";
@@ -17,5 +18,6 @@ export {
     RecommendedSection,
     PopularSection,
     FoodCard2,
-    CategorySection
+    CategorySection,
+    FilterModal
 }
