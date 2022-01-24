@@ -1,10 +1,13 @@
 import { View, Animated, Modal, TouchableWithoutFeedback, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
-import { COLORS, FONTS, icons, SIZES } from '../constants';
+import { COLORS, constants, FONTS, icons, SIZES } from '../constants';
+import TwoPointSlider from './TwoPointSlider';
+import TextButton from './TextButton';
 
 const FilterModal = (props) => {
     const { isVisible, onClose } = {...props}
     const [showFilterModal, setFilterModal] = useState(isVisible)
+    const [deliveryTime, setTime] = useState(0);
     const fadeAnim = useRef(new Animated.Value(0)).current;
 
     const fadeIn = () => {
@@ -98,17 +101,36 @@ const FilterModal = (props) => {
                             <View
                                 style={{ alignItems: 'center' }}
                             >
-
+                                <TwoPointSlider
+                                    values={[3,10]}
+                                    min={1}
+                                    max={20}
+                                    postfix="km"
+                                    onValuesChange={(values) => console.log(values)}
+                                />
                             </View>
                         </FilterSection>
 
                         <FilterSection
                             title="Delivery Time"
+                            containerStyle={{ marginTop: 40 }}
                         >
                             <View
-                                
+                                style={{ flexDirection: 'row', flexWrap: 'wrap' }}
                             >
-
+                                {constants.delivery_time.map((item, index) => {
+                                    return(
+                                        <TextButton
+                                            key={`delivery-time-${index}`}
+                                            label={item.label}
+                                            labelStyle={{ color: item.id == deliveryTime ? COLORS.white : COLORS.gray, ...FONTS.body3 }}
+                                            buttonContainerStyle={{ width: "30%", height: 50, margin: 5, alignItems: 'center', borderRadius: SIZES.base,
+                                                backgroundColor: deliveryTime == item.id ? COLORS.primary : COLORS.lightGray2
+                                            }}
+                                            onPress={() => setDeliveryTime(item.id)}
+                                        />
+                                    )
+                                })}
                             </View>
                         </FilterSection>
 
