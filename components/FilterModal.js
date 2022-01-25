@@ -200,6 +200,17 @@ const FilterModal = (props) => {
                             </View>
                         </FilterSection>
                     </ScrollView>
+                    <View
+                        style={{ position: 'absolute', bottom: 150, left: 0, right: 0, height: 110, paddingHorizontal: SIZES.padding,
+                            paddingVertical: SIZES.radius, backgroundColor: COLORS.white
+                        }}
+                    >
+                        <TextButton
+                            label="Apply Filters"
+                            buttonContainerStyle={{ height: 50, borderRadius: SIZES.base, backgroundColor: COLORS.primary }}
+                            onPress={() => console.log('Filter Button')}
+                        />
+                    </View>
                 </Animated.View>
             </View>
         </Modal>
