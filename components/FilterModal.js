@@ -8,6 +8,7 @@ const FilterModal = (props) => {
     const { isVisible, onClose } = {...props}
     const [showFilterModal, setFilterModal] = useState(isVisible)
     const [deliveryTime, setTime] = useState(0);
+    const [rating, setRating] = useState(0);
     const fadeAnim = useRef(new Animated.Value(0)).current;
 
     const fadeIn = () => {
@@ -127,7 +128,7 @@ const FilterModal = (props) => {
                                             buttonContainerStyle={{ width: "30%", height: 50, margin: 5, alignItems: 'center', borderRadius: SIZES.base,
                                                 backgroundColor: deliveryTime == item.id ? COLORS.primary : COLORS.lightGray2
                                             }}
-                                            onPress={() => setDeliveryTime(item.id)}
+                                            onPress={() => setTime(item.id)}
                                         />
                                     )
                                 })}
@@ -153,11 +154,26 @@ const FilterModal = (props) => {
 
                         <FilterSection
                             title="Rating"
+                            containerStyle={{ marginT: 40 }}
                         >
                             <View
-                                
+                                style={{ flexDirection: 'row', justifyContent: 'space-between' }}
                             >
-
+                                {constants.ratings.map((item, index) => {
+                                    return(
+                                        <TextButton
+                                            key={`ratings-${index}`}
+                                            label={item.label}
+                                            labelStyle={{ color: item.id == rating ? COLORS.white : COLORS.gray, ...FONTS.body3 }}
+                                            icon={icons.star}
+                                            iconStyle={{ tintColor: item.id == rating ? COLORS.white : COLORS.gray }}
+                                            buttonContainerStyle={{ flex: 1, height: 50, margin: 5, alignItems: 'center', borderRadius: SIZES.radius,
+                                                backgroundColor: item.id == rating ? COLORS.primary : COLORS.lightGray2
+                                            }}
+                                            onPress={() => setRating(item.id)}
+                                        />
+                                    )
+                                })}
                             </View>
                         </FilterSection>
 
