@@ -116,7 +116,7 @@ const FilterModal = (props) => {
                             containerStyle={{ marginTop: 40 }}
                         >
                             <View
-                                style={{ flexDirection: 'row', flexWrap: 'wrap' }}
+                                style={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: SIZES.radius }}
                             >
                                 {constants.delivery_time.map((item, index) => {
                                     return(
@@ -138,9 +138,16 @@ const FilterModal = (props) => {
                             title="Pricing Range"
                         >
                             <View
-                                
+                                style={{ alignItems: 'center' }}
                             >
-
+                                <TwoPointSlider
+                                    values={[10, 50]}
+                                    min={1}
+                                    max={100}
+                                    prefix="$"
+                                    postfix=""
+                                    onValuesChange={(values) => console.log(values)}
+                                />
                             </View>
                         </FilterSection>
 
