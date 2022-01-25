@@ -9,6 +9,7 @@ const FilterModal = (props) => {
     const [showFilterModal, setFilterModal] = useState(isVisible)
     const [deliveryTime, setTime] = useState(0);
     const [rating, setRating] = useState(0);
+    const [tags, setTags] = useState(0);
     const fadeAnim = useRef(new Animated.Value(0)).current;
 
     const fadeIn = () => {
@@ -167,7 +168,7 @@ const FilterModal = (props) => {
                                             labelStyle={{ color: item.id == rating ? COLORS.white : COLORS.gray, ...FONTS.body3 }}
                                             icon={icons.star}
                                             iconStyle={{ tintColor: item.id == rating ? COLORS.white : COLORS.gray }}
-                                            buttonContainerStyle={{ flex: 1, height: 50, margin: 5, alignItems: 'center', borderRadius: SIZES.radius,
+                                            buttonContainerStyle={{ flex: 1, height: 50, margin: 5, borderRadius: SIZES.radius,
                                                 backgroundColor: item.id == rating ? COLORS.primary : COLORS.lightGray2
                                             }}
                                             onPress={() => setRating(item.id)}
@@ -181,9 +182,21 @@ const FilterModal = (props) => {
                             title="Tags"
                         >
                             <View
-                                
+                                style={{ flexDirection: 'row', flexWrap: 'wrap' }}
                             >
-
+                                {constants.tags.map((item, index) => {
+                                    return(
+                                        <TextButton
+                                            key={`tags-${index}`}
+                                            label={item.label}
+                                            labelStyle={{ color: item.id == tags ? COLORS.white : COLORS.gray, ...FONTS.body3 }}
+                                            buttonContainerStyle={{ paddingHorizontal: SIZES.padding, height: 50, margin: 5, alignItems: 'center', borderRadius: SIZES.base,
+                                                backgroundColor: tags == item.id ? COLORS.primary : COLORS.lightGray2
+                                            }}
+                                            onPress={() => setTags(item.id)}
+                                        />
+                                    )
+                                })}
                             </View>
                         </FilterSection>
                     </ScrollView>
