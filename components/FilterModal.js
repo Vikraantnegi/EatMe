@@ -155,7 +155,7 @@ const FilterModal = (props) => {
 
                         <FilterSection
                             title="Rating"
-                            containerStyle={{ marginT: 40 }}
+                            containerStyle={{ marginTop: 40 }}
                         >
                             <View
                                 style={{ flexDirection: 'row', justifyContent: 'space-between' }}

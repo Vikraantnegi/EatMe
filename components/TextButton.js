@@ -7,7 +7,7 @@ const TextButton = (props) => {
     return (
         <TouchableOpacity
             activeOpacity={0.6}
-            style={{ alignItems: 'center', justifyContent: 'center', backgroundColor: COLORS.primary, ...buttonContainerStyle }}
+            style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: COLORS.primary, ...buttonContainerStyle }}
             onPress={onPress}
         >
             <Text
@@ -18,7 +18,7 @@ const TextButton = (props) => {
             {icon &&
                 <Image
                     source={icon}
-                    style={{ marginLeft: 5, width: 20, height: 20, ...iconStyle }}
+                    style={{ marginLeft: 5, width: 15, height: 15, ...iconStyle }}
                 />
             }
         </TouchableOpacity>
