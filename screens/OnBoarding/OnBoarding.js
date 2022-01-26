@@ -1,8 +1,43 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { View, Text, ImageBackground, Image, Animated } from 'react-native';
 import { constants, images, FONTS, SIZES, COLORS } from '../../constants'
+import TextButton from '../../components/TextButton'
 
-const OnBoarding = () => {
+const OnBoarding = ({navigation}) => {
+    
+    const screenNumber = new Animated.Value(0);
+    const currentScreen = useRef()
+
+    const Dots = () => {
+        const dotPosition = Animated.divide(screenNumber, SIZES.width)
+        return(
+            <View
+                style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}
+            >
+                {
+                    constants.onboarding_screens.map((item, index) => {
+                        const dotColor = dotPosition.interpolate({
+                            inputRange: [index - 1, index, index + 1],
+                            outputRange: [COLORS.lightOrange, COLORS.primary, COLORS.lightOrange],
+                            extrapolate: 'clamp'
+                        }) 
+                        const dotWidth = dotPosition.interpolate({
+                            inputRange: [index - 1, index, index + 1],
+                            outputRange: [10, 30, 10],
+                            extrapolate: 'clamp'
+                        }) 
+                        return(
+                            <Animated.View
+                                key={`dot-index`}
+                                style={{ borderRadius: 5, marginHorizontal: 6, width: dotWidth, height: 10, backgroundColor: dotColor }}
+                            />
+                        )
+                    })
+                }
+            </View>
+        )
+    }
+
     return (
         <View
             style={{ flex: 1 }}
@@ -17,12 +52,19 @@ const OnBoarding = () => {
                 />
             </View>
             <Animated.FlatList
+                ref={currentScreen}
                 horizontal
                 pagingEnabled
                 data={constants.onboarding_screens}
                 scrollEventThrottle={16}
                 snapToAlignment="center"
                 showsHorizontalScrollIndicator={false}
+                onScroll={Animated.event(
+                    [
+                        {nativeEvent: { contentOffset: { x: screenNumber }}}
+                    ],
+                    { useNativeDriver: false }
+                )}
                 keyExtractor={(item) => `${item.id}`}
                 renderItem={({item, index}) => {
                     return(
@@ -48,6 +90,41 @@ const OnBoarding = () => {
                             >
                                 <Text style={{ ...FONTS.h1, fontSize: 25, color: COLORS.black }}>{item.title}</Text>
                                 <Text style={{ marginTop: SIZES.radius, textAlign: 'center', color: COLORS.darkGray, paddingHorizontal: SIZES.padding, ...FONTS.body3 }}>{item.description}</Text>
+                            </View>
+                            <View
+                                style={{ height: 160 }}
+                            >
+                                <View
+                                    style={{ flex: 1, justifyContent: 'center' }}
+                                >
+                                    <Dots />
+                                </View>
+                                <View
+                                    style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: SIZES.padding, marginVertical: SIZES.padding }}
+                                >
+                                    <TextButton
+                                        label="Skip"
+                                        buttonContainerStyle={{ backgroundColor: null }}
+                                        labelStyle={{ color: COLORS.darkGray2 }}
+                                        onPress={() => navigation.replace("Home")}
+                                    />
+                                    <TextButton
+                                        label="Next"
+                                        buttonContainerStyle={{ height: 60, width: 200, borderRadius: SIZES.radius }}
+                                        labelStyle={{  }}
+                                        onPress={() => {
+                                            let index = Math.ceil(Number(screenNumber._value/SIZES.width))
+                                            if(index < constants.onboarding_screens.length - 1){
+                                                currentScreen?.current?.scrollToIndex({
+                                                    index: index + 1,
+                                                    animated: true
+                                                })
+                                            } else{
+                                                navigation.replace("SignIn")
+                                            }
+                                        }}
+                                    />
+                                </View>
                             </View>
                         </View>
                     )

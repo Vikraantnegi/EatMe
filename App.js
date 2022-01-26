@@ -21,17 +21,6 @@ const App = () => {
     return (
         <Provider store={store}>
             <NavigationContainer>
-                {/* <Stack.Navigator
-                    screenOptions={{
-                        headerShown: false
-                    }}
-                    initialRouteName={'Home'}
-                >
-                    <Stack.Screen
-                        name="Home"
-                        component={CustomDrawer}
-                    />
-                </Stack.Navigator> */}
                 <Stack.Navigator
                     screenOptions={{
                         headerShown: false
@@ -42,25 +31,25 @@ const App = () => {
                         name="OnBoarding"
                         component={OnBoarding}
                     />
-
                     <Stack.Screen
                         name="SignIn"
                         component={SignIn}
                     />
-
                     <Stack.Screen
                         name="SignUp"
                         component={SignUp}
                     />
-
                     <Stack.Screen
                         name="ForgotPassword"
                         component={ForgotPassword}
                     />
-
                     <Stack.Screen
                         name="Otp"
                         component={Otp}
+                    />
+                    <Stack.Screen
+                        name="Home"
+                        component={CustomDrawer}
                     />
                 </Stack.Navigator>
             </NavigationContainer>
