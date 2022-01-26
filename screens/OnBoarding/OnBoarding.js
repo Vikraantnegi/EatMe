@@ -43,6 +43,12 @@ const OnBoarding = () => {
                                     />
                                 </ImageBackground>
                             </View>
+                            <View
+                                style={{ flex: 1, marginTop: 30, alignItems: 'center', justifyContent: 'center', paddingHorizontal: SIZES.radius }}
+                            >
+                                <Text style={{ ...FONTS.h1, fontSize: 25, color: COLORS.black }}>{item.title}</Text>
+                                <Text style={{ marginTop: SIZES.radius, textAlign: 'center', color: COLORS.darkGray, paddingHorizontal: SIZES.padding, ...FONTS.body3 }}>{item.description}</Text>
+                            </View>
                         </View>
                     )
                 }}
