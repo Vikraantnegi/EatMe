@@ -4,6 +4,11 @@ import Search from "./Search/Search";
 import CartTab from "./Cart/CartTab"
 import Favourite from "./Favourite/Favourite";
 import Notification from "./Notification/Notification"
+import OnBoarding from "./OnBoarding/OnBoarding"
+import SignIn from "./Authentication/SignIn"
+import SignUp from "./Authentication/SignUp"
+import Otp from "./Authentication/Otp"
+import ForgotPassword from "./Authentication/ForgotPassword"
 
 export {
     MainLayout,
@@ -11,5 +16,10 @@ export {
     Search,
     CartTab,
     Favourite,
-    Notification
+    Notification,
+    OnBoarding,    
+    SignIn,
+    SignUp,
+    Otp,
+    ForgotPassword
 }
