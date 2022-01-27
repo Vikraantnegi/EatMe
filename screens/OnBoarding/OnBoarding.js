@@ -60,7 +60,7 @@ const OnBoarding = ({navigation}) => {
             {
                 currentIndex < constants.onboarding_screens.length - 1 &&
                     <View
-                        style={{ position: 'absolute', bottom: 0, left: 0, right: 0, flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: SIZES.padding, marginVertical: SIZES.padding }}
+                        style={{ position: 'absolute', zIndex: 10, bottom: 0, left: 0, right: 0, flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: SIZES.padding, marginVertical: SIZES.padding }}
                     >
                         <TextButton
                             label="Skip"
@@ -84,7 +84,7 @@ const OnBoarding = ({navigation}) => {
             {
                 currentIndex == constants.onboarding_screens.length - 1 &&
                     <View
-                        style={{ position: 'absolute', bottom: 0, left: 0, right: 0, paddingHorizontal: SIZES.padding, marginVertical: SIZES.padding }}
+                        style={{ position: 'absolute', zIndex: 10, bottom: 0, left: 0, right: 0, paddingHorizontal: SIZES.padding, marginVertical: SIZES.padding }}
                     >
                         <TextButton
                             label="Let's Get Started"
