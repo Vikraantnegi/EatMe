@@ -1,10 +1,19 @@
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import React from 'react';
+import { constants, images, FONTS, SIZES, COLORS } from '../../constants'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-const AuthLayout = () => {
+const AuthLayout = ({ title, subTitle, titleContainerStyle, children }) => {
     return (
-        <View>
-            <Text style={{color: 'black'}}>Auth Layout</Text>
+        <View
+            style={{ flex: 1, paddingVertical: SIZES.padding }}
+        >
+            <KeyboardAwareScrollView
+                keyboardDismissMode='on-drag'
+                contentContainerStyle={{ flex: 1, paddingHorizontal: SIZES.padding }}
+            >
+                
+            </KeyboardAwareScrollView>
         </View>
     )
 }

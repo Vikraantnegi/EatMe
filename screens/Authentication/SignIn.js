@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { AuthLayout } from './AuthLayout';
 
 const SignIn = () => {
     return (
@@ -10,7 +11,13 @@ const SignIn = () => {
                 justifyContent: 'center'
             }}
         >
-            <Text style={{color: 'black'}}>SignIn</Text>
+            <AuthLayout
+                title="Let's Sign You In"
+                subTitle=""
+                titleContainerStyle={{  }}
+            >
+
+            </AuthLayout>
         </View>
     )
 }
