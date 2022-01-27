@@ -1,18 +1,23 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { View, Text, ImageBackground, Image, Animated } from 'react-native';
 import { constants, images, FONTS, SIZES, COLORS } from '../../constants'
 import TextButton from '../../components/TextButton'
 
 const OnBoarding = ({navigation}) => {
     
-    const screenNumber = new Animated.Value(0);
-    const currentScreen = useRef()
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const scrollX = useRef(new Animated.Value(0)).current;
+    const flatListRef = useRef()
+
+    const onViewChangeRef = useRef(({ viewableItems, changed }) => {
+        setCurrentIndex(viewableItems[0].index)
+    })
 
     const Dots = () => {
-        const dotPosition = Animated.divide(screenNumber, SIZES.width)
+        const dotPosition = Animated.divide(scrollX, SIZES.width)
         return(
             <View
-                style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}
+                style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 96 }}
             >
                 {
                     constants.onboarding_screens.map((item, index) => {
@@ -51,8 +56,46 @@ const OnBoarding = ({navigation}) => {
                     style={{ width: SIZES.width*0.5, height: 100 }}
                 />
             </View>
+            
+            {
+                currentIndex < constants.onboarding_screens.length - 1 &&
+                    <View
+                        style={{ position: 'absolute', bottom: 0, left: 0, right: 0, flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: SIZES.padding, marginVertical: SIZES.padding }}
+                    >
+                        <TextButton
+                            label="Skip"
+                            buttonContainerStyle={{ backgroundColor: null }}
+                            labelStyle={{ color: COLORS.darkGray2 }}
+                            onPress={() => navigation.replace("SignIn")}
+                        />
+                        <TextButton
+                            label="Next"
+                            buttonContainerStyle={{ height: 60, width: 200, borderRadius: SIZES.radius }}
+                            onPress={() => {
+                                flatListRef?.current?.scrollToIndex({
+                                    index: currentIndex + 1,
+                                    animated: true
+                                })
+                            }}
+                        />
+                    </View>
+            }
+
+            {
+                currentIndex == constants.onboarding_screens.length - 1 &&
+                    <View
+                        style={{ position: 'absolute', bottom: 0, left: 0, right: 0, paddingHorizontal: SIZES.padding, marginVertical: SIZES.padding }}
+                    >
+                        <TextButton
+                            label="Let's Get Started"
+                            buttonContainerStyle={{ height: 60, width: "100%", borderRadius: SIZES.radius }}
+                            onPress={() => navigation.replace('SignIn')}
+                        />
+                    </View>
+            }
+
             <Animated.FlatList
-                ref={currentScreen}
+                ref={flatListRef}
                 horizontal
                 pagingEnabled
                 data={constants.onboarding_screens}
@@ -61,10 +104,11 @@ const OnBoarding = ({navigation}) => {
                 showsHorizontalScrollIndicator={false}
                 onScroll={Animated.event(
                     [
-                        {nativeEvent: { contentOffset: { x: screenNumber }}}
+                        {nativeEvent: { contentOffset: { x: scrollX }}}
                     ],
                     { useNativeDriver: false }
                 )}
+                onViewableItemsChanged={onViewChangeRef.current}
                 keyExtractor={(item) => `${item.id}`}
                 renderItem={({item, index}) => {
                     return(
@@ -98,33 +142,7 @@ const OnBoarding = ({navigation}) => {
                                     style={{ flex: 1, justifyContent: 'center' }}
                                 >
                                     <Dots />
-                                </View>
-                                <View
-                                    style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: SIZES.padding, marginVertical: SIZES.padding }}
-                                >
-                                    <TextButton
-                                        label="Skip"
-                                        buttonContainerStyle={{ backgroundColor: null }}
-                                        labelStyle={{ color: COLORS.darkGray2 }}
-                                        onPress={() => navigation.replace("Home")}
-                                    />
-                                    <TextButton
-                                        label="Next"
-                                        buttonContainerStyle={{ height: 60, width: 200, borderRadius: SIZES.radius }}
-                                        labelStyle={{  }}
-                                        onPress={() => {
-                                            let index = Math.ceil(Number(screenNumber._value/SIZES.width))
-                                            if(index < constants.onboarding_screens.length - 1){
-                                                currentScreen?.current?.scrollToIndex({
-                                                    index: index + 1,
-                                                    animated: true
-                                                })
-                                            } else{
-                                                navigation.replace("SignIn")
-                                            }
-                                        }}
-                                    />
-                                </View>
+                                </View> 
                             </View>
                         </View>
                     )
