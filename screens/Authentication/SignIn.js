@@ -1,23 +1,42 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import AuthLayout from '../../components/Auth/AuthLayout';
+import FormInput from '../../components/Auth/FormInput';
+import { COLORS, icons, SIZES } from '../../constants';
+import { utils } from '../../utils'
 
 const SignIn = () => {
+
+    const [ email, setEmail ] = useState('')
+    const [ password, setPassword ] = useState('')
+    const [ emailError, setEmailError ] = useState('')
+    const [ showPass, setShowPass ] = useState(false)
+
     return (
-        <View
-            style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center'
-            }}
+        <AuthLayout
+            title="Let's Sign You In"
+            subTitle="Welcome back, You've been missed!"
         >
-            <AuthLayout
-                title="Let's Sign You In"
-                subTitle="Welcome back, You've been missed!"
+            <View
+                style={{ flex: 1, marginTop: SIZES.padding*2 }}
             >
-                
-            </AuthLayout>
-        </View>
+                <FormInput
+                    label="Email"
+                    keyboardType="email-address"
+                    autoCompleteType="email"
+                    onChange={(value) => {
+                        utils.validateEmail(value, setEmailError)
+                        setEmail(value)
+                    }}
+                    errorMsg={emailError}
+                    appendComponent={
+                        <View style={{ justifyContent: 'center' }}>
+                            <Image source={ email === "" || (email !== "" || emailError == "") ? icons.correct : icons.cros } style={{ height: 20, width: 20, tintColor: email === "" || (email !== "" || emailError == "") ? COLORS.green : COLORS.red }} />
+                        </View>
+                    }
+                />
+            </View>
+        </AuthLayout>
     )
 }
 
