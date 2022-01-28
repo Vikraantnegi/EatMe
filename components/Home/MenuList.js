@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
-import { COLORS, dummyData, FONTS, SIZES } from '../constants';
+import { COLORS, dummyData, FONTS, SIZES } from '../../constants';
 
 const MenuList = (props) => {
 

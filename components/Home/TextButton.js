@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
-import { COLORS, FONTS } from '../constants';
+import { COLORS, FONTS } from '../../constants';
 
 const TextButton = (props) => {
     const {label, labelStyle, buttonContainerStyle, onPress, icon, iconStyle} = {...props}

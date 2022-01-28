@@ -2,7 +2,7 @@ import { View, Text, FlatList } from 'react-native';
 import React from 'react';
 import SectionHeader from './SectionHeader';
 import FoodCard2 from './FoodCard2';
-import { SIZES } from '../constants';
+import { SIZES } from '../../constants';
 
 const PopularSection = (props) => {
     const { data } = {...props}

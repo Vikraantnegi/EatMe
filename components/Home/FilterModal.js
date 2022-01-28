@@ -1,6 +1,6 @@
 import { View, Animated, Modal, TouchableWithoutFeedback, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
-import { COLORS, constants, FONTS, icons, SIZES } from '../constants';
+import { COLORS, constants, FONTS, icons, SIZES } from '../../constants';
 import TwoPointSlider from './TwoPointSlider';
 import TextButton from './TextButton';
 

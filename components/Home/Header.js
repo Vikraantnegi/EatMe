@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { COLORS, FONTS } from '../constants';
+import { COLORS, FONTS } from '../../constants';
 
 const Header = (props) => {
     const { containerStyle, title, left, right } = {...props}

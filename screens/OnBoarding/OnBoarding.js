@@ -33,7 +33,7 @@ const OnBoarding = ({navigation}) => {
                         }) 
                         return(
                             <Animated.View
-                                key={`dot-index`}
+                                key={`dot-${index}`}
                                 style={{ borderRadius: 5, marginHorizontal: 6, width: dotWidth, height: 10, backgroundColor: dotColor }}
                             />
                         )

@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
 import React from 'react';
-import { COLORS, FONTS, SIZES } from '../constants';
+import { COLORS, FONTS, SIZES } from '../../constants';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const SectionHeader = (props) => {

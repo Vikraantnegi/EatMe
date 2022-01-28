@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { AuthLayout } from './AuthLayout';
+import AuthLayout from '../../components/Auth/AuthLayout';
 
 const SignIn = () => {
     return (
@@ -13,10 +13,9 @@ const SignIn = () => {
         >
             <AuthLayout
                 title="Let's Sign You In"
-                subTitle=""
-                titleContainerStyle={{  }}
+                subTitle="Welcome back, You've been missed!"
             >
-
+                
             </AuthLayout>
         </View>
     )

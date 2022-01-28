@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
-import { COLORS, FONTS, SIZES, icons } from '../constants';
+import { COLORS, FONTS, SIZES, icons } from '../../constants';
 
 const FoodCard = (props) => {
   const { containerStyle, item, imageStyle, onPress } = {...props}

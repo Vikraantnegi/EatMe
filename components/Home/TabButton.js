@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Text, Image, TouchableWithoutFeedback } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
-import { COLORS, FONTS, SIZES  } from '../constants';
+import { COLORS, FONTS, SIZES  } from '../../constants';
 
 
 const TabButton = (props) => {

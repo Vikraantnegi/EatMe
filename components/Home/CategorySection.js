@@ -1,7 +1,7 @@
 import { View, Text, FlatList, Image } from 'react-native';
 import React from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { COLORS, FONTS, SIZES } from '../constants';
+import { COLORS, FONTS, SIZES } from '../../constants';
 
 const CategorySection = (props) => {
     const { data, selected, onSelect, handleChange, selectedMenuType } = {...props}

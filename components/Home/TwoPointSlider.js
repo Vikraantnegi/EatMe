@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import { COLORS, FONTS, SIZES } from '../constants';
+import { COLORS, FONTS, SIZES } from '../../constants';
 
 const TwoPointSlider = (props) => {
     const { values, min, max, prefix, postfix, onValuesChange } = {...props}

@@ -2,7 +2,7 @@ import { View, Text, FlatList } from 'react-native';
 import React from 'react';
 import SectionHeader from './SectionHeader';
 import FoodCard from './FoodCard';
-import { SIZES } from '../constants';
+import { SIZES } from '../../constants';
 
 const RecommendedSection = (props) => {
     const { data } = {...props}

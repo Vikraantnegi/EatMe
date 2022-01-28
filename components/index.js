@@ -1,13 +1,13 @@
-import CategorySection from "./CategorySection";
-import FilterModal from "./FilterModal";
-import FoodCard from "./FoodCard";
-import FoodCard2 from "./FoodCard2";
-import Header from "./Header";
-import MenuList from "./MenuList";
-import PopularSection from "./PopularSection";
-import RecommendedSection from "./RecommendedSection";
-import SearchComponent from "./SearchComponent";
-import TabButton from "./TabButton";
+import CategorySection from "./Home/CategorySection";
+import FilterModal from "./Home/FilterModal";
+import FoodCard from "./Home/FoodCard";
+import FoodCard2 from "./Home/FoodCard2";
+import Header from "./Home/Header";
+import MenuList from "./Home/MenuList";
+import PopularSection from "./Home/PopularSection";
+import RecommendedSection from "./Home/RecommendedSection";
+import SearchComponent from "./Home/SearchComponent";
+import TabButton from ".//Home/TabButton";
 
 export {
     Header,

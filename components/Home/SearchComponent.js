@@ -1,6 +1,6 @@
 import { View, Text, Image, TextInput } from 'react-native';
 import React from 'react';
-import { COLORS, SIZES, icons, FONTS } from '../constants';
+import { COLORS, SIZES, icons, FONTS } from '../../constants';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const SearchComponent = ({onOpen}) => {
