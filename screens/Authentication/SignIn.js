@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import AuthLayout from '../../components/Auth/AuthLayout';
+import CustomSwitch from '../../components/Auth/CustomSwitch';
 import FormInput from '../../components/Auth/FormInput';
-import { COLORS, icons, SIZES } from '../../constants';
+import TextButton from '../../components/Home/TextButton'
+import { COLORS, FONTS, icons, SIZES } from '../../constants';
 import { utils } from '../../utils'
 
 const SignIn = () => {
@@ -57,6 +59,12 @@ const SignIn = () => {
                     <CustomSwitch
                         value={saveMe}
                         onChange={() => setSave(!saveMe)}
+                    />
+                    <TextButton
+                        label="Forgot Password ?"
+                        buttonContainerStyle={{ backgroundColor: null }}
+                        labelStyle={{ color: COLORS.gray, ...FONTS.body4 }}
+                        onPress={() => props.navigation.navigate('Forgot Password')}
                     />
                 </View>
             </View>
