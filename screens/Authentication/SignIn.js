@@ -78,6 +78,18 @@ const SignIn = () => {
                     onPress={() => props.navigation.navigate('Forgot Password')}
                 />
 
+                <View
+                    style={{ flexDirection: 'row', justifyContent: 'center', marginTop: SIZES.radius }}
+                >
+                    <Text style={{ color: COLORS.darkGray, ...FONTS.body3 }}>Don't have an account? </Text>
+                    <TextButton 
+                        label="Sign Up!"
+                        buttonContainerStyle={{ backgroundColor: null }}
+                        labelStyle={{ color: COLORS.primary, ...FONTS.h3 }}
+                        onPress={() => props.navigation.navigate('Sign Up')}
+                    />
+                </View>
+
             </View>
         </AuthLayout>
     )
