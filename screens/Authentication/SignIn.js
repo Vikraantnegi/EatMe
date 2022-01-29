@@ -7,7 +7,7 @@ import TextButton from '../../components/Home/TextButton'
 import { COLORS, FONTS, icons, SIZES } from '../../constants';
 import { utils } from '../../utils'
 
-const SignIn = () => {
+const SignIn = (props) => {
 
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
@@ -75,7 +75,7 @@ const SignIn = () => {
                         backgroundColor: !(email !== "" && password !== "" && emailError === "") ? COLORS.transparentPrimray : COLORS.primary 
                     }}
                     labelStyle={{ ...FONTS.body4 }}
-                    onPress={() => props.navigation.navigate('Forgot Password')}
+                    onPress={() => props.navigation.navigate('Home')}
                 />
 
                 <View
@@ -86,7 +86,7 @@ const SignIn = () => {
                         label="Sign Up!"
                         buttonContainerStyle={{ backgroundColor: null }}
                         labelStyle={{ color: COLORS.primary, ...FONTS.h3 }}
-                        onPress={() => props.navigation.navigate('Sign Up')}
+                        onPress={() => props.navigation.navigate('SignUp')}
                     />
                 </View>
             </View>
