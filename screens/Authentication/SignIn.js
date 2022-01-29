@@ -89,7 +89,26 @@ const SignIn = () => {
                         onPress={() => props.navigation.navigate('Sign Up')}
                     />
                 </View>
-
+            </View>
+            <View>
+                <TextButton
+                    label="Continue with Facebook"
+                    buttonContainerStyle={{ height: 50, alignItems: 'center', borderRadius: SIZES.radius, backgroundColor: COLORS.blue }}
+                    labelStyle={{ marginLeft: SIZES.radius, color: COLORS.white }}
+                    icon={icons.fb}
+                    iconPosition="Left"
+                    iconStyle={{ tintColor: COLORS.white }}
+                    onPress={() => console.log("Facebook")}
+                />
+                <TextButton
+                    label="Continue with Google"
+                    buttonContainerStyle={{ height: 50, alignItems: 'center', borderRadius: SIZES.radius, marginTop: SIZES.radius, backgroundColor: COLORS.lightGray2 }}
+                    labelStyle={{ marginLeft: SIZES.radius, color: COLORS.black }}
+                    icon={icons.google}
+                    iconPosition="Left"
+                    iconStyle={{ tintColor: null }}
+                    onPress={() => console.log("Google")}
+                />
             </View>
         </AuthLayout>
     )
