@@ -87,7 +87,7 @@ const SignUp = (props) => {
                 />
 
                 <View
-                    style={{ flexDirection: 'row', justifyContent: 'center', marginTop: SIZES.radius }}
+                    style={{ flexDirection: 'row', justifyContent: 'center', marginVertical: SIZES.radius }}
                 >
                     <Text style={{ color: COLORS.darkGray, ...FONTS.body3 }}>Already have an account? </Text>
                     <TextButton 
@@ -97,8 +97,6 @@ const SignUp = (props) => {
                         onPress={() => props.navigation.goBack()}
                     />
                 </View>
-            </ScrollView>
-            <View>
                 <TextButton
                     label="Continue with Facebook"
                     buttonContainerStyle={{ height: 50, alignItems: 'center', borderRadius: SIZES.radius, backgroundColor: COLORS.blue }}
@@ -117,7 +115,7 @@ const SignUp = (props) => {
                     iconStyle={{ tintColor: null }}
                     onPress={() => console.log("Google")}
                 />
-            </View>
+            </ScrollView>
         </AuthLayout>
     )
 }
