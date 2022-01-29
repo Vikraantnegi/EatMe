@@ -17,12 +17,12 @@ const CustomSwitch = (props) => {
                     <View
                         style={{ ...styles.dot, backgroundColor: value ? COLORS.white : COLORS.gray }}
                     />
-                    <Text
-                        style={{ color: value ? COLORS.primary : COLORS.gray, marginLeft: SIZES.base, ...FONTS.body4 }}
-                    >
-                        Save Me
-                    </Text>
                 </View>
+                <Text
+                    style={{ color: value ? COLORS.primary : COLORS.gray, marginLeft: SIZES.base, ...FONTS.body4 }}
+                >
+                    Save Me
+                </Text>
             </View>
         </TouchableWithoutFeedback>
     );
