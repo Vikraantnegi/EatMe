@@ -34,7 +34,7 @@ const SignIn = () => {
                     errorMsg={emailError}
                     appendComponent={
                         <View style={{ justifyContent: 'center' }}>
-                            <Image source={ email === "" || (email !== "" || emailError == "") ? icons.correct : icons.cross } style={{ height: 20, width: 20, tintColor: email === "" || (email !== "" || emailError == "") ? COLORS.green : COLORS.red }} />
+                            <Image source={ email == "" || (email != "" && emailError == "") ? icons.correct : icons.cross } style={{ height: 20, width: 20, tintColor: email === "" ? COLORS.gray : (email !== "" && emailError == "") ? COLORS.green : COLORS.red }} />
                         </View>
                     }
                 />
@@ -67,6 +67,17 @@ const SignIn = () => {
                         onPress={() => props.navigation.navigate('Forgot Password')}
                     />
                 </View>
+
+                <TextButton
+                    label="Sign In"
+                    disabled={!(email !== "" && password !== "" && emailError === "")}
+                    buttonContainerStyle={{ height: 55, alignItems: 'center', marginTop: SIZES.padding, borderRadius: SIZES.radius,
+                        backgroundColor: !(email !== "" && password !== "" && emailError === "") ? COLORS.transparentPrimray : COLORS.primary 
+                    }}
+                    labelStyle={{ ...FONTS.body4 }}
+                    onPress={() => props.navigation.navigate('Forgot Password')}
+                />
+
             </View>
         </AuthLayout>
     )

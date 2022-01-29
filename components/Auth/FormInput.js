@@ -17,7 +17,7 @@ const FormInput = (props) => {
             >
                 {prependComponent}
                 <TextInput
-                    style={{ flex: 1, ...inputStyle }}
+                    style={{ flex: 1, color: COLORS.black, ...inputStyle }}
                     placeholder={placeholder}
                     placeholderTextColor={COLORS.gray}
                     secureTextEntry={secureTextEntry}

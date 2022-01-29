@@ -3,12 +3,13 @@ import React from 'react';
 import { COLORS, FONTS } from '../../constants';
 
 const TextButton = (props) => {
-    const {label, labelStyle, buttonContainerStyle, onPress, icon, iconStyle} = {...props}
+    const {label, labelStyle, disabled, buttonContainerStyle, onPress, icon, iconStyle} = {...props}
     return (
         <TouchableOpacity
             activeOpacity={0.6}
             style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: COLORS.primary, ...buttonContainerStyle }}
             onPress={onPress}
+            disabled={disabled}
         >
             <Text
                 style={{ color: COLORS.white, ...FONTS.h3, ...labelStyle }}
