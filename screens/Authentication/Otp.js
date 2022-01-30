@@ -52,6 +52,24 @@ const Otp = (props) => {
                     />
                 </View>
             </View>
+            <View>
+                <TextButton
+                    label="Continue"
+                    buttonContainerStyle={{ height: 50, alignItems: 'center', borderRadius: SIZES.radius, backgroundColor: COLORS.primary }}
+                    onPress={() => props.navigation.navigate('Home')}
+                />
+                <View
+                    style={{ marginTop: SIZES.padding, alignItems: 'center' }}
+                >
+                    <Text style={{ colors: COLORS.darkGray, ...FONTS.body3 }}>By signing up, you agree to our</Text>
+                    <TextButton
+                        label="Terms and Conditions"
+                        buttonContainerStyle={{ backgroundColor: null }}
+                        labelStyle={{ color: COLORS.primary, ...FONTS.body3 }}
+                        onPress={() => console.log('T&C')}
+                    />
+                </View>
+            </View>
         </AuthLayout>
     )
 }
