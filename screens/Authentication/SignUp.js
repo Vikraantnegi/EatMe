@@ -80,7 +80,7 @@ const SignUp = (props) => {
                     label="Sign Up"
                     disabled={!(email !== "" && password !== "" && username !="" && emailError === "" && passwordError === "" && nameError === "")}
                     buttonContainerStyle={{ height: 55, alignItems: 'center', marginTop: SIZES.padding, borderRadius: SIZES.radius,
-                        backgroundColor: !(email !== "" && password !== "" && username !="" && emailError === "" && passwordError === "" && nameError === "") ? COLORS.transparentPrimray : COLORS.primary 
+                        backgroundColor: !(email !== "" && password !== "" && username !="" && emailError === "" && passwordError === "" && nameError === "") ? COLORS.transparentPrimary : COLORS.primary 
                     }}
                     labelStyle={{ ...FONTS.body4 }}
                     onPress={() => props.navigation.navigate('Otp')}

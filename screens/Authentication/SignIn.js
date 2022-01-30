@@ -72,7 +72,7 @@ const SignIn = (props) => {
                     label="Sign In"
                     disabled={!(email !== "" && password !== "" && emailError === "")}
                     buttonContainerStyle={{ height: 55, alignItems: 'center', marginTop: SIZES.padding, borderRadius: SIZES.radius,
-                        backgroundColor: !(email !== "" && password !== "" && emailError === "") ? COLORS.transparentPrimray : COLORS.primary 
+                        backgroundColor: !(email !== "" && password !== "" && emailError === "") ? COLORS.transparentPrimary : COLORS.primary 
                     }}
                     labelStyle={{ ...FONTS.body4 }}
                     onPress={() => props.navigation.navigate('Home')}
