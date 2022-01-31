@@ -40,7 +40,9 @@ const FoodDetail = () => {
             />
 
             <ScrollView>
-                <View style={{ marginTop: SIZES.radius, marginBottom: SIZES.padding, paddingHorizontal: SIZES.padding }}>
+                <View 
+                    style={{ marginTop: SIZES.radius, marginBottom: SIZES.padding, paddingHorizontal: SIZES.padding }}
+                >
                     <View
                         style={{ height: 190, borderRadius: 15, backgroundColor: COLORS.lightGray2 }}
                     >
@@ -68,6 +70,13 @@ const FoodDetail = () => {
                             resizeMode='contain'
                             style={{ width: "100%", height: 170 }}
                         />
+                    </View>
+
+                    <View
+                        style={{ marginTop: SIZES.padding }}
+                    >
+                        <Text style={{ color: COLORS.black, ...FONTS.h1 }}>{foodItem?.name}</Text>
+                        <Text style={{ color: COLORS.darkGray, marginTOp: SIZES.base, textAlign: 'justify', ...FONTS.body3 }}>{foodItem?.description}</Text>
                     </View>
                 </View>
             </ScrollView>
