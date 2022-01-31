@@ -89,7 +89,7 @@ const CustomDrawerContent = (props) => {
                             navigation.navigate("MainLayout")
                         }}
                     />
-                    <View style={{ height: 1, marginLeft: SIZES.radius, marginVertical: SIZES.radius, backgroundColor: COLORS.lightGray1 }} />
+                <View style={{ height: 1, marginLeft: SIZES.radius, marginVertical: SIZES.radius, backgroundColor: COLORS.lightGray1 }} />
                     <CustomDrawerItem
                         label={constants.screens.track}
                         icon={icons.location}

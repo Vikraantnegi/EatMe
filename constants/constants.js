@@ -30,6 +30,11 @@ const screens = {
     favourite: "Favourite",
     notification: "Notification",
     my_wallet: "My Wallet",
+    track: "Track your Order",
+    coupons: "Coupons",
+    settings: "Settings",
+    invite: "Invite a friend",
+    help: "Help Center"
 }
 
 const bottom_tabs = [
