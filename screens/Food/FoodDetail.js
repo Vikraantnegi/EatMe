@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     View,
-    Text
+    Text,
+    ScrollView,
+    Image
 } from 'react-native';
 import { Header } from '../../components';
 import IconButton from '../../components/IconButton';
-import { COLORS, icons, SIZES } from '../../constants';
+import { COLORS, dummyData, FONTS, icons, SIZES } from '../../constants';
 
 const FoodDetail = () => {
+
+    const [foodItem, setFooditem] = useState(dummyData.vegBiryani)
+
     return (
         <View 
             style={{ flex: 1, backgroundColor: COLORS.white }}
@@ -34,6 +39,38 @@ const FoodDetail = () => {
                 }
             />
 
+            <ScrollView>
+                <View style={{ marginTop: SIZES.radius, marginBottom: SIZES.padding, paddingHorizontal: SIZES.padding }}>
+                    <View
+                        style={{ height: 190, borderRadius: 15, backgroundColor: COLORS.lightGray2 }}
+                    >
+                        <View
+                            style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: SIZES.base, paddingHorizontal: SIZES.radius }}
+                        >
+                            <View
+                                style={{ flexDirection: 'row' }}
+                            >
+                                <Image
+                                    source={icons.calories}
+                                    style={{ width: 30, height: 30 }}
+                                />
+                                <Text style={{ color: COLORS.darkGray2, ...FONTS.body4 }}>{foodItem?.calories}  Calories</Text>
+                            </View>
+
+                            <Image
+                                source={icons.love}
+                                style={{ width: 20, height: 20, tintColor: foodItem?.isFavourite ? COLORS.primary : COLORS.gray }}
+                            />
+                        </View>
+
+                        <Image
+                            source={foodItem?.image}
+                            resizeMode='contain'
+                            style={{ width: "100%", height: 170 }}
+                        />
+                    </View>
+                </View>
+            </ScrollView>
         </View>
     )
 }
