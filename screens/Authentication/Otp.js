@@ -61,7 +61,7 @@ const Otp = (props) => {
                 <View
                     style={{ marginTop: SIZES.padding, alignItems: 'center' }}
                 >
-                    <Text style={{ colors: COLORS.darkGray, ...FONTS.body3 }}>By signing up, you agree to our</Text>
+                    <Text style={{ color: COLORS.darkGray, ...FONTS.body3 }}>By signing up, you agree to our</Text>
                     <TextButton
                         label="Terms and Conditions"
                         buttonContainerStyle={{ backgroundColor: null }}

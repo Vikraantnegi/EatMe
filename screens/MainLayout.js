@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Image, FlatList } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { connect } from 'react-redux';
 import { setSelectedTab } from '../app/Sidebar/TabActions';
-import { Home, Search, CartTab, Favourite, Notification } from '../screens';
+import { Home, Search, MyCart, Favourite, Notification } from '../screens';
 import { COLORS, SIZES, icons, constants, dummyData  } from '../constants';
 import { Header, TabButton } from '../components'
 import LinearGradient from 'react-native-linear-gradient'
@@ -69,7 +69,7 @@ const MainLayout = (props) => {
                             >
                                 {item.label == constants.screens.home && <Home />}
                                 {item.label == constants.screens.search && <Search />}
-                                {item.label == constants.screens.cart && <CartTab />}
+                                {item.label == constants.screens.cart && <MyCart />}
                                 {item.label == constants.screens.favourite && <Favourite />}
                                 {item.label == constants.screens.notification && <Notification />}
                             </View>

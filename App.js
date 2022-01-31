@@ -6,7 +6,7 @@ import store from "./app/store";
 import { Provider } from "react-redux";
 import { LogBox } from 'react-native';
 import SplashScreen from 'react-native-splash-screen'
-import { OnBoarding, Otp, SignIn, SignUp, ForgotPassword } from './screens/index'
+import { OnBoarding, Otp, SignIn, SignUp, ForgotPassword, FoodDetail, Checkout, MyCart, Success, AddCard, MyCard, DeliveryStatus, Map } from './screens/index'
 
 LogBox.ignoreAllLogs();
 
@@ -25,7 +25,7 @@ const App = () => {
                     screenOptions={{
                         headerShown: false
                     }}
-                    initialRouteName={'OnBoarding'}
+                    initialRouteName={'Home'}
                 >
                     <Stack.Screen
                         name="OnBoarding"
@@ -50,6 +50,45 @@ const App = () => {
                     <Stack.Screen
                         name="Home"
                         component={CustomDrawer}
+                    />
+                     <Stack.Screen
+                        name="FoodDetail"
+                        component={FoodDetail}
+                    />
+
+                    <Stack.Screen
+                        name="Checkout"
+                        component={Checkout}
+                    />
+
+                    <Stack.Screen
+                        name="MyCart"
+                        component={MyCart}
+                    />
+
+                    <Stack.Screen
+                        name="Success"
+                        component={Success}
+                    />
+
+                    <Stack.Screen
+                        name="AddCard"
+                        component={AddCard}
+                    />
+
+                    <Stack.Screen
+                        name="MyCard"
+                        component={MyCard}
+                    />
+
+                    <Stack.Screen
+                        name="DeliveryStatus"
+                        component={DeliveryStatus}
+                    />
+
+                    <Stack.Screen
+                        name="Map"
+                        component={Map}
                     />
                 </Stack.Navigator>
             </NavigationContainer>
