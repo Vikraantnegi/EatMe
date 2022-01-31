@@ -24,7 +24,6 @@ const MainLayout = (props) => {
                 ...drawerAnimationStyle
             }}
         >
-            {/* Header */}
             <Header
                 containerStyle={{ height: 50, paddingHorizontal: SIZES.padding, marginTop: 20, alignItems: 'center' }}
                 title={selectedTab.toUpperCase()}
@@ -48,7 +47,6 @@ const MainLayout = (props) => {
                 }
             />
 
-            {/* Content */}
             <View
                 style={{ flex: 1 }}
             >

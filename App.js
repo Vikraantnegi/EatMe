@@ -6,7 +6,9 @@ import store from "./app/store";
 import { Provider } from "react-redux";
 import { LogBox } from 'react-native';
 import SplashScreen from 'react-native-splash-screen'
-import { OnBoarding, Otp, SignIn, SignUp, ForgotPassword, FoodDetail, Checkout, MyCart, Success, AddCard, MyCard, DeliveryStatus, Map } from './screens/index'
+import { OnBoarding, Otp, SignIn, SignUp, ForgotPassword, FoodDetail, 
+    Checkout, MyCart, Success, AddCard, MyCard, DeliveryStatus, Map 
+} from './screens/index'
 
 LogBox.ignoreAllLogs();
 
@@ -25,7 +27,7 @@ const App = () => {
                     screenOptions={{
                         headerShown: false
                     }}
-                    initialRouteName={'Home'}
+                    initialRouteName={'FoodDetail'}
                 >
                     <Stack.Screen
                         name="OnBoarding"
