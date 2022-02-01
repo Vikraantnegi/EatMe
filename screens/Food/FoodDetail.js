@@ -4,7 +4,9 @@ import { Header } from '../../components';
 import TextButton from '../../components/Home/TextButton';
 import IconButton from '../../components/Food/IconButton';
 import IconLabel from '../../components/Food/IconLabel';
-import { COLORS, dummyData, FONTS, icons, SIZES } from '../../constants';
+import LineDivider from '../../components/Food/LineDivider';
+import { COLORS, dummyData, FONTS, icons, images, SIZES } from '../../constants';
+import Rating from '../../components/Food/Rating';
 
 const FoodDetail = () => {
 
@@ -122,7 +124,29 @@ const FoodDetail = () => {
                         </View>
                     </View>
                 </View>
+
+                <LineDivider />
+
+                <View
+                    style={{ flexDirection: 'row', marginVertical: SIZES.padding, paddingHorizontal: SIZES.padding, alignItems: 'center' }}
+                >
+                    <Image source={images.profile} style={{ width: 50, height: 50, borderRadius: SIZES.radius }} />
+                    <View style={{ flex: 1, marginLeft: SIZES.radius, justifyContent: 'center' }}>
+                        <Text style={{ ...FONTS.h3, color: COLORS.black }}>Totoya Food</Text>
+                        <Text style={{ ...FONTS.body4, color: COLORS.gray }}>1.2 km away from you</Text>
+                    </View>
+                    <Rating
+                        rating={4}
+                        iconStyle={{ marginLeft: 3 }}
+                    />
+                </View>
             </ScrollView>
+
+            <LineDivider />
+
+            <View style={{ flexDirection: 'row', height: 120, alignItems: 'center', paddingHorizontal: SIZES.padding, paddingBottom: SIZES.radius }}>
+                
+            </View>
         </View>
     )
 }
