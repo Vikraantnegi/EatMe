@@ -1,6 +1,6 @@
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import React from 'react';
-import { COLORS, FONTS, SIZES } from '../constants';
+import { COLORS, FONTS, SIZES } from '../../constants';
 
 const IconLabel = (props) => {
     const { containerStyle, label, labelStyle, icon, iconStyle } = {...props}

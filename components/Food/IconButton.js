@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
-import { COLORS, FONTS, SIZES } from '../constants';
+import { COLORS, FONTS, SIZES } from '../../constants';
 
 const IconButton = (props) => {
     const {buttonContainerStyle, onPress, icon, iconStyle, quantity} = {...props}

@@ -201,7 +201,7 @@ const FilterModal = (props) => {
                         </FilterSection>
                     </ScrollView>
                     <View
-                        style={{ position: 'absolute', bottom: 150, left: 0, right: 0, height: 110, paddingHorizontal: SIZES.padding,
+                        style={{ position: 'absolute', bottom: 130, left: 0, right: 0, height: 110, paddingHorizontal: SIZES.padding,
                             paddingVertical: SIZES.radius, backgroundColor: COLORS.white
                         }}
                     >
