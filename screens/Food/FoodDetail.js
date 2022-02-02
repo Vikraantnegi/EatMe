@@ -7,11 +7,14 @@ import IconLabel from '../../components/Food/IconLabel';
 import LineDivider from '../../components/Food/LineDivider';
 import { COLORS, dummyData, FONTS, icons, images, SIZES } from '../../constants';
 import Rating from '../../components/Food/Rating';
+import BuyButton from '../../components/Food/BuyButton';
+import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
 
 const FoodDetail = () => {
 
     const [foodItem, setFooditem] = useState(dummyData.vegBiryani)
     const [selectedSize, setSelectedSize] = useState("")
+    const [qty, setQty] = useState(1);
 
     return (
         <View 
@@ -145,7 +148,19 @@ const FoodDetail = () => {
             <LineDivider />
 
             <View style={{ flexDirection: 'row', height: 120, alignItems: 'center', paddingHorizontal: SIZES.padding, paddingBottom: SIZES.radius }}>
-                
+                <InputCart
+                    value={qty}
+                    onMinus={() => {
+                        if(qty > 1) setQty(qty - 1)
+                    }}
+                    onAdd={() => setQty(qty + 1)}
+                />
+                <BuyButton
+                    buttonContainerStyle={{ flex: 1, height: 60, flexDirection: 'row', marginLeft: SIZES.radius, paddingHorizontal: SIZES.radius, borderRadius: SIZES.radius, backgroundColor: COLORS.primary }}
+                    label="Buy Now"
+                    label1={dummyData.vegBiryani.price}
+                    onPress={() => baseProps.navigation.navigate('MyCart')}
+                />
             </View>
         </View>
     )
