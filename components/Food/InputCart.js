@@ -10,7 +10,7 @@ const InputCart = (props) => {
             style={{ flexDirection: 'row', height: 60, width: 130, backgroundColor: COLORS.lightGray2, borderRadius: SIZES.radius, ...containerStyle }}
         >
             <IconButton
-                containerStyle={{ width: 50, alignItems: 'center', justifyContent: 'center' }}
+                buttonContainerStyle={{ width: 50 }}
                 icon={icons.minus}
                 iconStyle={{ height: 25, width: 25, tintColor: value > 1 ? COLORS.primary : COLORS.gray }}
                 onPress={onMinus}
@@ -21,7 +21,7 @@ const InputCart = (props) => {
                 <Text style={{ color: COLORS.black, ...FONTS.h2 }}>{value}</Text>
             </View>
             <IconButton
-                containerStyle={{ width: 50, alignItems: 'center', justifyContent: 'center' }}
+                buttonContainerStyle={{ width: 50 }}
                 icon={icons.plus}
                 iconStyle={{ height: 25, width: 25, tintColor: COLORS.primary }}
                 onPress={onAdd}
