@@ -28,7 +28,7 @@ const FoodDetail = (props) => {
                         icon={icons.back}
                         buttonContainerStyle={{ width: 40, height: 40, borderWidth: 1, borderRadius: SIZES.radius, borderColor: COLORS.gray2, backgroundColor: COLORS.white }}
                         iconStyle={{ width: 20, height: 20, tintColor: COLORS.gray2 }}
-                        onPress={() => console.log('Back')}
+                        onPress={() => props.navigation.goBack()}
                     />
                 }
                 right={
