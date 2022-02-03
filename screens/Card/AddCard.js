@@ -1,11 +1,13 @@
-import { View, Text } from 'react-native';
-import React from 'react';
-import { COLORS, icons, SIZES } from '../../constants';
+import { View, Text, ImageBackground, Image } from 'react-native';
+import React, { useState } from 'react';
+import { COLORS, icons, SIZES, images, FONTS, dummyData } from '../../constants';
 import { Header } from '../../components';
 import IconButton from '../../components/Food/IconButton';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const AddCard = (props) => {
-    const { navigation } = {...props}
+    const { navigation, route } = {...props}
+    const [ selectedCard, setSelectedCard ] = useState(route.params.selectedCard)
     return (
       <View
           style={{ flex: 1, backgroundColor: COLORS.white }}
@@ -25,6 +27,25 @@ const AddCard = (props) => {
                   <View style={{ width: 40 }} />
               }
           />
+
+          <KeyboardAwareScrollView
+              keyboardDismissMode='on-drag'
+              contentContainerStyle={{ flexGrow: 1, paddingHorizontal: SIZES.padding }}
+          >
+              <ImageBackground
+                source={images.card}
+                style={{ height: 200, width: "100%", marginTop: SIZES.radius, borderRadius: SIZES.radius, overflow: 'hidden' }}
+              >
+                  <Image source={selectedCard?.icon} resizeMode='contain' style={{ position: 'absolute', top: 20, right: 20, width: 80, height: 40 }} />
+                  <View style={{ position: 'absolute', bottom: 20, left: 0, right: 0, paddingHorizontal: SIZES.padding }}>
+                      <Text style={{ color: COLORS.white, ...FONTS.h3 }}>{dummyData.myProfile.name}</Text>
+                      <View style={{ flexDirection: 'row' }}>
+                          <Text style={{ flex: 1, color: COLORS.white, ...FONTS.body3 }}>XXXX XXXX XXXX XXXX</Text>
+                          <Text style={{ color: COLORS.white, ...FONTS.body3 }}>MM/YY</Text>
+                      </View>
+                  </View>
+              </ImageBackground>
+          </KeyboardAwareScrollView>
       </View>
     );
 };
