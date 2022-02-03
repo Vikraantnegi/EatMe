@@ -5,6 +5,7 @@ import { Header } from '../../components';
 import IconButton from '../../components/Food/IconButton';
 import { COLORS, icons, SIZES, dummyData, FONTS } from '../../constants';
 import InputCart from '../../components/Food/InputCart';
+import BillingComponent from '../../components/Cart/BillingComponent';
 
 const MyCart = ({ navigation }) => {
 
@@ -83,6 +84,12 @@ const MyCart = ({ navigation }) => {
                         onPress={() => removeCart(data.item.id)}
                     />
                 )}
+            />
+
+            <BillingComponent
+                subTotal={37.97}
+                shippingFee={0.00}
+                onPress={() => navigation.navigate('MyCards')}
             />
         </View>
     )
