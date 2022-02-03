@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, Image } from 'react-native';
+import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { COLORS, icons, SIZES, images, FONTS, dummyData } from '../../constants';
 import { Header } from '../../components';
@@ -6,7 +6,7 @@ import IconButton from '../../components/Food/IconButton';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import FormInput from '../../components/Auth/FormInput';
 import { utils } from '../../utils';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import TextButton from '../../components/Home/TextButton';
 
 const AddCard = (props) => {
     const { navigation, route } = {...props}
@@ -21,6 +21,8 @@ const AddCard = (props) => {
     const [ cvv, setCVV ] = useState("")
     const [ cvvError, setCVVError ] = useState("")
     const [ remember, setremember ] = useState(false)
+
+    const addCardEnabled = cardNumber !== "" && cardNumberError !== "" && cardName !== "" && cardNameError !== "" && expiryError !== "" && expiry !== "" && cvv !== "" && cvvError !== "";
 
     return (
       <View
@@ -144,13 +146,32 @@ const AddCard = (props) => {
                           }
                       />
                   </View>
-                  <TouchableOpacity
-                      activeOpacity={0.6}
-                  >
-                    
-                  </TouchableOpacity>
+                  <View style={{ marginTop: SIZES.padding, alignItems: 'flex-start' }}>
+                      <TouchableOpacity
+                          activeOpacity={0.6}
+                          style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}
+                          onPress={() => setremember(!remember)}
+                      >
+                          <Image 
+                              source={remember ? icons.check_on : icons.check_off}
+                              style={{ marginLeft: 5, width: 20, height: 20 }}
+                          />
+
+                          <Text style={{ marginLeft: SIZES.radius, color: remember ? COLORS.primary : COLORS.gray, ...FONTS.body3 }}>
+                              Remember this card details!
+                          </Text>
+                      </TouchableOpacity>
+                  </View>
               </View>
           </KeyboardAwareScrollView>
+          <View style={{ paddingTop: SIZES.radius, paddingBottom: SIZES.padding, paddingHorizontal: SIZES.padding }}>
+                <TextButton
+                    disabled={!addCardEnabled}
+                    label="Add Card"
+                    buttonContainerStyle={{ height: 60, borderRadius: SIZES.radius, backgroundColor: addCardEnabled ? COLORS.primary : COLORS.transparentPrimary }}
+                    onPress={() => navigation.navigate('Checkout')}
+                />
+          </View>
       </View>
     );
 };
