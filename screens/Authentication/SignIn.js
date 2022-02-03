@@ -25,6 +25,7 @@ const SignIn = (props) => {
             >
                 <FormInput
                     label="Email"
+                    value={email}
                     keyboardType="email-address"
                     autoCompleteType="email"
                     onChange={(value) => {
@@ -41,6 +42,7 @@ const SignIn = (props) => {
 
                 <FormInput
                     label="Password"
+                    value={password}
                     secureTextEntry={!showPass}
                     autoCompleteType="password"
                     containerStyle={{ marginTop: SIZES.radius }}
@@ -79,7 +81,7 @@ const SignIn = (props) => {
                 />
 
                 <View
-                    style={{ flexDirection: 'row', justifyContent: 'center', marginTop: SIZES.radius }}
+                    style={{ flexDirection: 'row', justifyContent: 'center', marginVertical: SIZES.radius }}
                 >
                     <Text style={{ color: COLORS.darkGray, ...FONTS.body3 }}>Don't have an account? </Text>
                     <TextButton 
@@ -89,8 +91,6 @@ const SignIn = (props) => {
                         onPress={() => props.navigation.navigate('SignUp')}
                     />
                 </View>
-            </View>
-            <View>
                 <TextButton
                     label="Continue with Facebook"
                     buttonContainerStyle={{ height: 50, alignItems: 'center', borderRadius: SIZES.radius, backgroundColor: COLORS.blue }}

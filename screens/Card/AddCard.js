@@ -4,10 +4,24 @@ import { COLORS, icons, SIZES, images, FONTS, dummyData } from '../../constants'
 import { Header } from '../../components';
 import IconButton from '../../components/Food/IconButton';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import FormInput from '../../components/Auth/FormInput';
+import { utils } from '../../utils';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const AddCard = (props) => {
     const { navigation, route } = {...props}
+
     const [ selectedCard, setSelectedCard ] = useState(route.params.selectedCard)
+    const [ cardNumber, setCardNumber ] = useState("")
+    const [ cardNumberError, setCardNumberError ] = useState("")
+    const [ cardName, setCardName ] = useState("")
+    const [ cardNameError, setCardNameError ] = useState("")
+    const [ expiry, setExpiry ] = useState("")
+    const [ expiryError, setExpiryError ] = useState("")
+    const [ cvv, setCVV ] = useState("")
+    const [ cvvError, setCVVError ] = useState("")
+    const [ remember, setremember ] = useState(false)
+
     return (
       <View
           style={{ flex: 1, backgroundColor: COLORS.white }}
@@ -38,13 +52,104 @@ const AddCard = (props) => {
               >
                   <Image source={selectedCard?.icon} resizeMode='contain' style={{ position: 'absolute', top: 20, right: 20, width: 80, height: 40 }} />
                   <View style={{ position: 'absolute', bottom: 20, left: 0, right: 0, paddingHorizontal: SIZES.padding }}>
-                      <Text style={{ color: COLORS.white, ...FONTS.h3 }}>{dummyData.myProfile.name}</Text>
+                      <Text style={{ color: COLORS.white, ...FONTS.h3 }}>{cardName || dummyData.myProfile.name}</Text>
                       <View style={{ flexDirection: 'row' }}>
-                          <Text style={{ flex: 1, color: COLORS.white, ...FONTS.body3 }}>XXXX XXXX XXXX XXXX</Text>
-                          <Text style={{ color: COLORS.white, ...FONTS.body3 }}>MM/YY</Text>
+                          <Text style={{ flex: 1, color: COLORS.white, ...FONTS.body3 }}>{ cardNumber || "XXXX XXXX XXXX XXXX" }</Text>
+                          <Text style={{ color: COLORS.white, ...FONTS.body3 }}>{ expiry || "MM/YY" }</Text>
                       </View>
                   </View>
               </ImageBackground>
+
+              <View style={{ marginTop: SIZES.padding*2 }}>
+                  <FormInput
+                      label="Card Number"
+                      keyboardType="number-pad"
+                      value={cardNumber}
+                      onChange={(value) => {
+                          utils.validateInput(value, 19, setCardNumberError)
+                          setCardNumber(value.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim()) /* First s is for space, second regex -> d is for digits */ 
+                      }}
+                      errorMsg={cardNumberError}
+                      maxLength={19}
+                      appendComponent={
+                          <View style={{ justifyContent: 'center' }}>
+                              <Image 
+                                  source={ cardNumber == "" || (cardNumber != "" && cardNumberError == "") ? icons.correct : icons.cross } 
+                                  style={{ height: 20, width: 20, tintColor: cardNumber === "" ? COLORS.gray : (cardNumber !== "" && cardNumberError == "") ? COLORS.green : COLORS.red }} 
+                              />
+                          </View>
+                      }
+                  />
+
+                  <FormInput
+                      label="Card Holder Name"
+                      value={cardName}
+                      onChange={(value) => {
+                          utils.validateInput(value, 1, setCardNameError)
+                          setCardName(value) 
+                      }}
+                      errorMsg={cardNameError}
+                      appendComponent={
+                          <View style={{ justifyContent: 'center' }}>
+                              <Image 
+                                  source={ cardName == "" || (cardName != "" && cardNameError == "") ? icons.correct : icons.cross } 
+                                  style={{ height: 20, width: 20, tintColor: cardName === "" ? COLORS.gray : (cardName !== "" && cardNameError == "") ? COLORS.green : COLORS.red }} 
+                              />
+                          </View>
+                      }
+                  />
+
+                  <View style={{ flexDirection: 'row', marginTop: SIZES.radius }}>
+                      <FormInput
+                          keyboardType="number-pad"
+                          label="Expiry Date"
+                          value={expiry}
+                          placeholder="MM/YY"
+                          maxLength={5}
+                          containerStyle={{ flex: 1 }}
+                          onChange={(value) => {
+                              utils.validateInput(value, 5, setExpiryError)
+                              setExpiry(value)
+                          }}
+                          errorMsg={expiryError}
+                          appendComponent={
+                              <View style={{ justifyContent: 'center' }}>
+                                  <Image 
+                                      source={ expiry == "" || (expiry != "" && expiryError == "") ? icons.correct : icons.cross } 
+                                      style={{ height: 20, width: 20, tintColor: expiry === "" ? COLORS.gray : (expiry !== "" && expiryError == "") ? COLORS.green : COLORS.red }} 
+                                  />
+                              </View>
+                          }
+                      />
+                      
+                      <FormInput
+                          keyboardType="number-pad"
+                          label="CVV"
+                          value={cvv}
+                          placeholder="CVV"
+                          maxLength={3}
+                          containerStyle={{ flex: 1, marginLeft: SIZES.radius }}
+                          onChange={(value) => {
+                              utils.validateInput(value, 3, setCVVError)
+                              setCVV(value)
+                          }}
+                          errorMsg={cvvError}
+                          appendComponent={
+                              <View style={{ justifyContent: 'center' }}>
+                                  <Image 
+                                      source={ cvv == "" || (cvv != "" && cvvError == "") ? icons.correct : icons.cross } 
+                                      style={{ height: 20, width: 20, tintColor: cvv === "" ? COLORS.gray : (cvv !== "" && cvvError == "") ? COLORS.green : COLORS.red }} 
+                                  />
+                              </View>
+                          }
+                      />
+                  </View>
+                  <TouchableOpacity
+                      activeOpacity={0.6}
+                  >
+                    
+                  </TouchableOpacity>
+              </View>
           </KeyboardAwareScrollView>
       </View>
     );

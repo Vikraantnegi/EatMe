@@ -28,6 +28,7 @@ const SignUp = (props) => {
             >
                 <FormInput
                     label="Email"
+                    value={email}
                     keyboardType="email-address"
                     autoCompleteType="email"
                     onChange={(value) => {
@@ -44,8 +45,10 @@ const SignUp = (props) => {
 
                 <FormInput
                     label="Username"
+                    value={username}
                     containerStyle={{ marginTop: SIZES.radius }}
                     onChange={(value) => {
+                        utils.validateInput(value, 5, setnameError)
                         setUsername(value)
                     }}
                     errorMsg={nameError}
@@ -58,6 +61,7 @@ const SignUp = (props) => {
 
                 <FormInput
                     label="Password"
+                    value={password}
                     secureTextEntry={!showPass}
                     autoCompleteType="password"
                     containerStyle={{ marginTop: SIZES.radius }}

@@ -3,8 +3,8 @@ import React from 'react';
 import { FONTS, SIZES, COLORS } from '../../constants';
 
 const FormInput = (props) => {
-  const { containerStyle, label, placeholder, inputStyle, prependComponent, appendComponent, onChange, secureTextEntry,
-    keyboardType="default", autoCompleteType="off", autoCapitalize="none", errorMsg="" } = {...props}
+  const { containerStyle, inputContainerStyle, label, placeholder, inputStyle, prependComponent, appendComponent, onChange, secureTextEntry,
+    keyboardType="default", autoCompleteType="off", autoCapitalize="none", errorMsg="", value="", maxLength } = {...props}
 
     return (
         <View style={{ ...containerStyle }}>
@@ -13,7 +13,10 @@ const FormInput = (props) => {
                 <Text style={{ color: COLORS.red, ...FONTS.body4 }}>{errorMsg}</Text>
             </View>
             <View
-                style={{ flexDirection: 'row', height: 55, paddingHorizontal: SIZES.padding, marginTop: SIZES.base, borderRadius: SIZES.radius, backgroundColor: COLORS.lightGray2 }}
+                style={{ flexDirection: 'row', height: 55, paddingHorizontal: SIZES.padding, 
+                    marginTop: SIZES.base, borderRadius: SIZES.radius, backgroundColor: COLORS.lightGray2,
+                    ...inputContainerStyle 
+                }}
             >
                 {prependComponent}
                 <TextInput
@@ -25,6 +28,8 @@ const FormInput = (props) => {
                     autoCompleteType={autoCompleteType}
                     autoCapitalize={autoCapitalize}
                     onChangeText={(text) => onChange(text)}
+                    value={value} // Value added for Card, Check for Auth
+                    maxLength={maxLength}
                 />
                 {appendComponent}
             </View>

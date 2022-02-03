@@ -21,6 +21,7 @@ const ForgotPassword = () => {
             >
                 <FormInput
                     label="Email"
+                    value={email}
                     keyboardType="email-address"
                     autoCompleteType="email"
                     onChange={(value) => {
