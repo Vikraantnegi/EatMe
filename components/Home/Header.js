@@ -6,7 +6,7 @@ const Header = (props) => {
     const { containerStyle, title, left, right, titleStyle } = {...props}
     return (
         <View
-            style={{ flexDirection: 'row', ...containerStyle }}
+            style={{ flexDirection: 'row', alignItems: 'center', ...containerStyle }}
         >
             {left}
 
