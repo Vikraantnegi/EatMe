@@ -7,7 +7,7 @@ const CardItem = (props) => {
     const { item, isSelected, onPress } = {...props}
     return (
         <TouchableOpacity
-            style={{ flexDirection: 'row', height: 100, alignItems: 'center', marginTop: SIZES.radius, paddingHorizontal: SIZES.padding, 
+            style={{ flexDirection: 'row', height: 80, alignItems: 'center', marginTop: SIZES.radius, paddingHorizontal: SIZES.padding, 
                 borderWidth: 2, borderRadius: SIZES.radius, borderColor: isSelected ? COLORS.primary : COLORS.lightGray2
             }}
             onPress={onPress}
