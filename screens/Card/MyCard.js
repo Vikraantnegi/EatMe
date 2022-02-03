@@ -1,9 +1,10 @@
 import { View, Text, ScrollView } from 'react-native';
 import React, { useState } from 'react';
-import { COLORS, dummyData, icons, SIZES } from '../../constants';
+import { COLORS, dummyData, FONTS, icons, SIZES } from '../../constants';
 import { Header } from '../../components';
 import IconButton from '../../components/Food/IconButton';
 import CardItem from '../../components/Card/CardItem';
+import TextButton from '../../components/Home/TextButton';
 
 const MyCard = ({ navigation }) => {
 
@@ -42,7 +43,30 @@ const MyCard = ({ navigation }) => {
                         />
                     )
                 })}
+
+                <View style={{ marginTop: SIZES.padding }}>
+                  <Text style={{ color: COLORS.black, ...FONTS.h3 }}>Add New Card</Text>
+                  {dummyData.allCards.map((item, index) => {
+                      return (
+                          <CardItem
+                              key={`NewCard-${item.id}`}
+                              item={item}
+                              isSelected={`${selectedCard?.key}-${selectedCard?.id}` === `NewCard-${item.id}`}
+                              onPress={() => setSelectedCard({...item, key: 'NewCard'})}
+                          />
+                      )
+                  })}
+                </View>
             </ScrollView>
+
+            <View style={{ paddingTop: SIZES.radius, paddingBottom: SIZES.padding, paddingHorizontal: SIZES.padding }}>
+                <TextButton
+                    disabled={selectedCard === null}
+                    buttonContainerStyle={{ height: 60, borderRadius: SIZES.radius, backgroundColor: selectedCard === null ? COLORS.gray : COLORS.primary }}
+                    label={selectedCard?.key === "NewCard" ? "Add" : "Continue"}
+                    onPress={() =>  selectedCard?.key === "NewCard" ? navigation.navigate('AddCard', { selectedCard: selectedCard }) : navigation.navigate('Checkout', { selectedCard: selectedCard })}
+                />
+            </View>
         </View>
     );
 };

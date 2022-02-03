@@ -3,6 +3,7 @@ import {
     View,
     Text,
 } from 'react-native';
+import { COLORS } from '../../constants';
 
 const Checkout = ({ navigation, route }) => {
 
@@ -13,7 +14,7 @@ const Checkout = ({ navigation, route }) => {
                 backgroundColor: COLORS.white
             }}
         >
-            <Text>Checkout</Text>
+            <Text style={{ color: COLORS.black }}>Checkout</Text>
         </View>
     )
 }

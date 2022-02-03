@@ -31,8 +31,8 @@ const BillingComponent = (props) => {
                 </View>
                 <LineDivider />
                 <View style={{ flexDirection: 'row', marginTop: SIZES.padding }}>
-                    <Text style={{ color: COLORS.black, flex: 1, ...FONTS.body3 }}>Total Bill</Text>
-                    <Text style={{ color: COLORS.black, ...FONTS.h3 }}>${(shippingFee + subTotal).toFixed(2)}</Text>
+                    <Text style={{ color: COLORS.black, flex: 1, ...FONTS.h2 }}>Total Bill</Text>
+                    <Text style={{ color: COLORS.black, ...FONTS.h2 }}>${(shippingFee + subTotal).toFixed(2)}</Text>
                 </View>
                 <TextButton
                     buttonContainerStyle={{ height: 60, marginTop: SIZES.padding, borderRadius: SIZES.radius, backgroundColor: COLORS.primary }}
