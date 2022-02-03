@@ -89,7 +89,7 @@ const MyCart = ({ navigation }) => {
             <BillingComponent
                 subTotal={37.97}
                 shippingFee={0.00}
-                onPress={() => navigation.navigate('MyCards')}
+                onPress={() => navigation.navigate('MyCard')}
             />
         </View>
     )
