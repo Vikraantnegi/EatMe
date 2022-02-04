@@ -68,7 +68,7 @@ const Checkout = ({ navigation, route }) => {
             <BillingComponent
                 subTotal={37.97}
                 shippingFee={0.00}
-                onPress={() => navigation.navigate('MyCard')}
+                onPress={() => navigation.replace('Success')}
             />
         </View>
     )

@@ -22,7 +22,7 @@ const AddCard = (props) => {
     const [ cvvError, setCVVError ] = useState("")
     const [ remember, setremember ] = useState(false)
 
-    const addCardEnabled = cardNumber !== "" && cardNumberError !== "" && cardName !== "" && cardNameError !== "" && expiryError !== "" && expiry !== "" && cvv !== "" && cvvError !== "";
+    const addCardEnabled = (cardNumber !== "" && cardNumberError == "" && cardName !== "" && cardNameError == "" && expiryError == "" && expiry !== "" && cvv !== "" && cvvError == "");
 
     return (
       <View
@@ -103,7 +103,6 @@ const AddCard = (props) => {
 
                   <View style={{ flexDirection: 'row', marginTop: SIZES.radius }}>
                       <FormInput
-                          keyboardType="number-pad"
                           label="Expiry Date"
                           value={expiry}
                           placeholder="MM/YY"
@@ -169,7 +168,7 @@ const AddCard = (props) => {
                     disabled={!addCardEnabled}
                     label="Add Card"
                     buttonContainerStyle={{ height: 60, borderRadius: SIZES.radius, backgroundColor: addCardEnabled ? COLORS.primary : COLORS.transparentPrimary }}
-                    onPress={() => navigation.navigate('Checkout')}
+                    onPress={() => navigation.goBack()}
                 />
           </View>
       </View>
