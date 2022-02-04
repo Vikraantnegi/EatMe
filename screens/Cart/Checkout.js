@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { Header } from '../../components';
 import CardItem from '../../components/Card/CardItem';
 import BillingComponent from '../../components/Cart/BillingComponent';
 import IconButton from '../../components/Food/IconButton';
-import { COLORS, dummyData, icons, SIZES } from '../../constants';
+import FormInput from '../../components/Auth/FormInput'
+import { COLORS, dummyData, icons, SIZES, FONTS } from '../../constants';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const Checkout = ({ navigation, route }) => {
@@ -34,16 +35,34 @@ const Checkout = ({ navigation, route }) => {
                 extraScrollHeight={-200}
                 contentContainerStyle={{ flexGrow: 1, paddingHorizontal: SIZES.padding, paddingBottom: 20 }}
             >
-                {selectedCard && dummyData.myCards.map((item, index) => {
-                    return (
-                        <CardItem
-                            key={`MyCard-${item.id}`}
-                            item={item}
-                            isSelected={`${selectedCard?.key}-${selectedCard?.id}` === `MyCard-${item.id}`}
-                            onPress={() => setSelectedCard({...item, key: 'MyCard'})}
-                        />
-                    )
-                })}
+                <CardItem
+                    key={`MyCard-${selectedCard.id}`}
+                    item={selectedCard}
+                    isSelected={true}
+                />
+
+                <View style={{ marginTop: SIZES.padding }} >
+                    <Text style={{ color: COLORS.black, ...FONTS.h3 }}>Delivery Address</Text>
+                    <View
+                        style={{ flexDirection: 'row', alignItems: 'center', marginTop: SIZES.radius, paddingVertical: SIZES.radius, paddingHorizontal: SIZES.padding, borderWidth: 2, borderRadius: SIZES.radius, borderColor: COLORS.lightGray2 }}
+                    >
+                        <Image source={icons.location1} style={{ width: 30, height: 30, marginRight: 10 }} />
+                        <Text style={{ marginLeft: SIZES.radius, width: '85%', color: COLORS.black, ...FONTS.body3 }}>723, HUDA, Sector 8, Ambala City, Ambala, HR - 134003</Text>
+                    </View>
+                </View>
+
+                <View style={{ marginTop: SIZES.padding }} >
+                    <Text style={{ color: COLORS.black, ...FONTS.h3 }}>Add Coupon</Text>
+                    <FormInput
+                        inputContainerStyle={{ marginTop: 0, paddingRight: 0, paddingLeft: SIZES.padding, borderWidth: 2, borderColor: COLORS.lightGray2, backgroundColor: COLORS.white, overflow: 'hidden' }}
+                        placeholder="Coupon Code"
+                        appendComponent={
+                            <View style={{ width: 60, alignItems: 'center', justifyContent: 'center', backgroundColor: COLORS.primary }}>
+                                <Image source={icons.discount} style={{ width: 40, height: 40 }} />
+                            </View>
+                        }
+                    />
+                </View>
             </KeyboardAwareScrollView>
             
             <BillingComponent
