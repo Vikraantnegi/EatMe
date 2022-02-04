@@ -27,7 +27,7 @@ const App = () => {
                     screenOptions={{
                         headerShown: false
                     }}
-                    initialRouteName={'Checkout'}
+                    initialRouteName={'MyCard'}
                 >
                     <Stack.Screen
                         name="OnBoarding"

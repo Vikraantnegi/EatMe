@@ -5,9 +5,10 @@ import CardItem from '../../components/Card/CardItem';
 import BillingComponent from '../../components/Cart/BillingComponent';
 import IconButton from '../../components/Food/IconButton';
 import { COLORS, dummyData, icons, SIZES } from '../../constants';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const Checkout = ({ navigation, route }) => {
-    const [ selectedCard, setSelectedCard ] = useState(null)
+    const [ selectedCard, setSelectedCard ] = useState(route.params.selectedCard)
 
     return (
         <View
@@ -28,8 +29,12 @@ const Checkout = ({ navigation, route }) => {
                     <View style={{ width: 40 }} />
                 }
             />
-            <View style={{ flex: 1, paddingHorizontal: SIZES.padding }}>
-                {dummyData.myCards.map((item, index) => {
+            <KeyboardAwareScrollView
+                keyboardDismissMode='on-drag'
+                extraScrollHeight={-200}
+                contentContainerStyle={{ flexGrow: 1, paddingHorizontal: SIZES.padding, paddingBottom: 20 }}
+            >
+                {selectedCard && dummyData.myCards.map((item, index) => {
                     return (
                         <CardItem
                             key={`MyCard-${item.id}`}
@@ -39,7 +44,8 @@ const Checkout = ({ navigation, route }) => {
                         />
                     )
                 })}
-            </View>
+            </KeyboardAwareScrollView>
+            
             <BillingComponent
                 subTotal={37.97}
                 shippingFee={0.00}
