@@ -22,6 +22,13 @@ const DeliveryStatus = ({ navigation }) => {
                     <View style={{ width: 40 }} />
                 }
             />
+
+            <View style={{ marginTop: SIZES.radius, paddingHorizontal: SIZES.padding }}>
+                <Text style={{ textAlign: 'center', color: COLORS.gray, ...FONTS.body4 }}>Estimated Delivery</Text>
+                <Text style={{ color: COLORS.black, ...FONTS.h2, textAlign: 'center' }}>05 Feb 2022 / 06:30PM</Text>
+            </View>
+
+            
         </View>
     )
 }
