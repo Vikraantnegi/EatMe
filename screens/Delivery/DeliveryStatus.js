@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
-import { COLORS, icons, SIZES, FONTS } from '../../constants';
+import { COLORS, icons, SIZES, FONTS, constants } from '../../constants';
 import Header from '../../components/Home/Header'
 import IconButton from '../../components/Food/IconButton';
+import LineDivider from '../../components/Food/LineDivider';
+
 
 const DeliveryStatus = ({ navigation }) => {
+    const [current, setCurrent] = useState(0)
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.white}}>
             <Header
@@ -28,7 +31,29 @@ const DeliveryStatus = ({ navigation }) => {
                 <Text style={{ color: COLORS.black, ...FONTS.h2, textAlign: 'center' }}>05 Feb 2022 / 06:30PM</Text>
             </View>
 
-            
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, paddingHorizontal: SIZES.padding }}>
+                <Text style={{ ...FONTS.h3 }}>Track Order</Text>
+                <Text style={{ color: COLORS.gray, ...FONTS.body3 }}>HR01001</Text>
+            </View>
+            <LineDivider lineStyle={{ backgroundColor: COLORS.lightGray2 }} />
+            <View style={{ marginTop: SIZES.padding, paddingHorizontal: SIZES.padding }}>
+                {constants.track_order_status.map((item, index) => {
+                    return (
+                        <View key={`status-${index}`}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: -5 }}>
+                                <Image
+                                    source={icons.check_circle}
+                                    style={{ width: 40, height: 40, tintColor: index <= current ? COLORS.primary : COLORS.lightGray1 }}
+                                />
+                                <View style={{ marginLeft: SIZES.radius }}>
+                                    <Text style={{ color: COLORS.black, ...FONTS.h3 }}>{item.title}</Text>
+                                    <Text style={{ color: COLORS.gray, ...FONTS.b4 }}></Text>
+                                </View>
+                            </View>
+                        </View>
+                    )
+                })}
+            </View>
         </View>
     )
 }
