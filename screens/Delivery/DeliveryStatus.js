@@ -4,7 +4,7 @@ import { COLORS, icons, SIZES, FONTS, constants } from '../../constants';
 import Header from '../../components/Home/Header'
 import IconButton from '../../components/Food/IconButton';
 import LineDivider from '../../components/Food/LineDivider';
-
+import TextButton from '../../components/Home/TextButton';
 
 const DeliveryStatus = ({ navigation }) => {
     const [current, setCurrent] = useState(0)
@@ -62,6 +62,35 @@ const DeliveryStatus = ({ navigation }) => {
                     })}
                 </View>
             </ScrollView>
+            <View style={{ marginTop: SIZES.radius, marginBottom: SIZES.padding }}>
+                {
+                    current < constants.track_order_status.length - 1 && <View style={{ flexDirection: 'row', height: 55 }}>
+                        <TextButton
+                            buttonContainerStyle={{ width: '40%', borderRadius: SIZES.base, backgroundColor: COLORS.lightGray2 }}
+                            label="Cancel"
+                            labelStyle={{ color: COLORS.primary }}
+                            onPress={() => navigation.navigate('FoodDetail')}
+                        />
+                        <TextButton
+                            buttonContainerStyle={{ flex: 1, marginLeft: SIZES.radius, borderRadius: SIZES.base }}
+                            label="Map View"
+                            labelStyle={{ ...FONTS.h3 }}
+                            icon={icons.map}
+                            iconPosition="Left"
+                            iconStyle={{ width: 25, height: 25, marginRight: SIZES.base, tintColor: COLORS.white }}
+                            onPress={() => navigation.navigate('Map')}
+                        />
+                    </View>
+                }
+                {
+                    current === constants.track_order_status.length - 1 && 
+                        <TextButton
+                            buttonContainerStyle={{ height: 55, borderRadius: SIZES.base }}
+                            label="Done"
+                            onPress={() => navigation.navigate('FoodDetail')}
+                        />
+                }
+            </View>
         </View>
     )
 }
