@@ -3,8 +3,9 @@ import { View, Text, Image, StyleSheet, Platform, TouchableOpacity } from 'react
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps'
 import MapViewDirections from 'react-native-maps-directions'
 import LinearGradient from 'react-native-linear-gradient'
-import { COLORS, constants, dummyData, icons, SIZES } from '../../constants';
+import { COLORS, constants, dummyData, FONTS, icons, images, SIZES } from '../../constants';
 import { utils } from '../../utils';
+import IconButton from '../../components/Food/IconButton';
 
 const Map = ({ navigation }) => {
 
@@ -36,8 +37,7 @@ const Map = ({ navigation }) => {
     }, [])
 
     return (
-        <View style={{ flex: 1 }}
-        >
+        <View style={{ flex: 1 }}>
             <MapView
                 ref={mapView}
                 style={{ flex: 1 }}
@@ -86,15 +86,84 @@ const Map = ({ navigation }) => {
                                 let angle = utils.calculateAngle(result.coordinates)
                                 setAngle(angle)
                             }
-
                             setReady(true)
                         }
                     }}
                 />
             </MapView>
-            
+            <>
+                <IconButton
+                    icon={icons.back}
+                    buttonContainerStyle={{ position: 'absolute', top: SIZES.padding*2, left: SIZES.padding, ...styles.buttonStyle }}
+                    iconStyle={{ width: 20, height: 20, tintColor: COLORS.gray }}
+                    onPress={() => navigation.goBack()}
+                />
+                <View style={{  position: 'absolute', top: SIZES.padding*2, right: SIZES.padding }}>
+                    <IconButton
+                        icon={icons.globe}
+                        buttonContainerStyle={{ ...styles.buttonStyle }}
+                        iconStyle={{ width: 20, height: 20, tintColor: COLORS.gray }}
+                        onPress={() => navigation.goBack()}
+                    />
+                    <IconButton
+                        icon={icons.focus}
+                        buttonContainerStyle={{ ...styles.buttonStyle, marginTop: SIZES.radius }}
+                        iconStyle={{ width: 20, height: 20, tintColor: COLORS.gray }}
+                        onPress={() => navigation.goBack()}
+                    />
+                </View>
+            </>
+            <View style={{ position: 'absolute', bottom: 0, width: '100%' }}>
+                <LinearGradient
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 0, y: 1 }}
+                    colors={[COLORS.transparent, COLORS.lightGray1]}
+                    style={{ position: 'absolute', top: -20, left: 0, right: 0, height: Platform.OS ==='ios' ? 200 : 50 }}
+                />
+                <View
+                    style={{ padding: SIZES.padding, borderTopLeftRadius: 30, borderTopRightRadius: 30, backgroundColor: COLORS.white }}
+                >
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Image source={icons.clock} style={{ width: 40, height: 40, tintColor: COLORS.black }} />
+                        <View style={{ marginLeft: SIZES.padding }}>
+                            <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>Your delivery time</Text>
+                            <Text style={{ color: COLORS.black, ...FONTS.h3 }}>{duration} minutes</Text>
+                        </View>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: SIZES.padding }}>
+                        <Image source={icons.focus} style={{ width: 40, height: 40, tintColor: COLORS.black }} />
+                        <View style={{ marginLeft: SIZES.padding }}>
+                            <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>Your Address</Text>
+                            <Text style={{ color: COLORS.black, ...FONTS.h3 }}>723, HUDA, Sector 8, Ambala City, Ambala, HR - 134003</Text>
+                        </View>
+                    </View>
+                    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginTop: SIZES.padding, height: 70, justifyContent: 'center', borderRadius: SIZES.radius, paddingHorizontal: SIZES.radius, backgroundColor: COLORS.primary }}>
+                        <Image source={images.profile} style={{ width: 40, height: 40, borderRadius: 5 }} />
+                        <View style={{ flex: 1, marginLeft: SIZES.padding }}>
+                            <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Adarsh Singh</Text>
+                            <Text style={{ color: COLORS.white, ...FONTS.body4 }}>Delivery Woman</Text>
+                        </View>
+                        <View style={{ height: 40, width: 40, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderRadius: 55, borderColor: COLORS.white, backgroundColor: COLORS.transparentWhite1 }}>
+                            <Image source={icons.call} style={{ width: 30, height: 30 }} />
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </View>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    buttonStyle: {
+        width: 40,
+        height: 40,
+        borderRadius: SIZES.radius,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderColor: COLORS.gray2,
+        backgroundColor: COLORS.white
+    }
+})
 
 export default Map;
