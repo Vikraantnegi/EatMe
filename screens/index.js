@@ -1,6 +1,7 @@
 import MainLayout from "./MainLayout"
 import Home from "./Home/Home"
 import Search from "./Search/Search";
+import Cart from "./Cart/Cart";
 import MyCart from "./Cart/MyCart";
 import Favourite from "./Favourite/Favourite";
 import Notification from "./Notification/Notification"
@@ -21,6 +22,7 @@ export {
     MainLayout,
     Home,
     Search,
+    Cart,
     MyCart,
     Favourite,
     Notification,
