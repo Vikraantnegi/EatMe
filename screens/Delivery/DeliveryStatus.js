@@ -9,7 +9,7 @@ import TextButton from '../../components/Home/TextButton';
 const DeliveryStatus = ({ navigation }) => {
     const [current, setCurrent] = useState(0)
     return (
-        <View style={{ flex: 1, backgroundColor: COLORS.white}}>
+        <View style={{ flex: 1, backgroundColor: COLORS.white, paddingHorizontal: SIZES.padding}}>
             <Header
                 title="DELIVERY STATUS"
                 containerStyle={{ height: 50, marginHorizontal: SIZES.padding, marginTop: 20 }}
@@ -29,27 +29,28 @@ const DeliveryStatus = ({ navigation }) => {
             <View style={{ marginTop: SIZES.radius, paddingHorizontal: SIZES.padding }}>
                 <Text style={{ textAlign: 'center', color: COLORS.gray, ...FONTS.body4 }}>Estimated Delivery</Text>
                 <Text style={{ color: COLORS.black, ...FONTS.h2, textAlign: 'center' }}>05 Feb 2022 / 06:30PM</Text>
-            </View>
-            
+            </View>            
             <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, paddingHorizontal: SIZES.padding }}>
-                    <Text style={{ ...FONTS.h3 }}>Track Order</Text>
-                    <Text style={{ color: COLORS.gray, ...FONTS.body3 }}>HR01001</Text>
-                </View>
-                <LineDivider lineStyle={{ backgroundColor: COLORS.lightGray2 }} />
-                <View style={{ marginTop: SIZES.padding, paddingHorizontal: SIZES.padding }}>
-                    {constants.track_order_status.map((item, index) => {
-                        return (
-                            <View key={`status-${index}`}>
-                                <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: -5 }}>
-                                    <Image
-                                        source={icons.check_circle}
-                                        style={{ width: 40, height: 40, tintColor: index <= current ? COLORS.primary : COLORS.lightGray1 }}
-                                    />
-                                    <View style={{ marginLeft: SIZES.radius }}>
-                                        <Text style={{ color: COLORS.black, ...FONTS.h3 }}>{item.title}</Text>
-                                        <Text style={{ color: COLORS.gray, ...FONTS.b4 }}></Text>
-                                    </View>
+                <View style={{ marginTop: SIZES.padding, paddingVertical: SIZES.padding, borderRadius: SIZES.radius, borderWidth: 2, borderColor: COLORS.lightGray2, backgroundColor: COLORS.white2 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, paddingHorizontal: SIZES.padding }}>
+                        <Text style={{ color: COLORS.black, ...FONTS.h3 }}>Track Order</Text>
+                        <Text style={{ color: COLORS.gray, ...FONTS.body3 }}>HR01001</Text>
+                    </View>
+                    <LineDivider lineStyle={{ backgroundColor: COLORS.lightGray2 }} />
+                    <View style={{ marginTop: SIZES.padding, paddingHorizontal: SIZES.padding }}>
+                        {constants.track_order_status.map((item, index) => {
+                            return (
+                                <View key={`status-${index}`}>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: -5 }}>
+                                        <Image
+                                            source={icons.check_circle}
+                                            style={{ width: 40, height: 40, tintColor: index <= current ? COLORS.primary : COLORS.lightGray1 }}
+                                        />
+                                        <View style={{ marginLeft: SIZES.radius }}>
+                                            <Text style={{ color: COLORS.black, ...FONTS.h3 }}>{item.title}</Text>
+                                            <Text style={{ color: COLORS.gray, ...FONTS.b4 }}>{item.sub_title}</Text>
+                                        </View>
+                                    </View>                                
                                     {
                                         index < constants.track_order_status.length - 1 && <View>
                                             { index < current && <View style={{ height: 50, width: 3, marginLeft: 18, backgroundColor: COLORS.primary, zIndex: -1 }} /> }
@@ -57,9 +58,9 @@ const DeliveryStatus = ({ navigation }) => {
                                         </View>
                                     }
                                 </View>
-                            </View>
-                        )
-                    })}
+                            )
+                        })}
+                    </View>
                 </View>
             </ScrollView>
             <View style={{ marginTop: SIZES.radius, marginBottom: SIZES.padding }}>
